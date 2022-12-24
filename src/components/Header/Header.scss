@@ -131,19 +131,18 @@ hr{
 @media screen and (max-width: 800px) {
 
     .app{
-        position: relative;
-    
+
         .header{
             &__options{
 
                 background-color:rgb(255, 255, 255);
                 position: absolute;
-                bottom: -500px; 
-// delete .. .. 
+                bottom: 0; 
 
-                width: 100%;
+                width: 97%;
                 height: 70px;
-
+                margin-left: 10px;
+                margin-right: 10px;
                 justify-content:space-between;
 
                 &-search{
