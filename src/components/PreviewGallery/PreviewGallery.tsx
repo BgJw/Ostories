@@ -22,6 +22,8 @@ const PreviewGallery = () => {
             .then(res => setImg(res))
 
     }, [])
+        isOpenModal ? document.body.style.overflow = 'hidden': document.body.style.overflow = '' ;
+
 
     return (
         <>

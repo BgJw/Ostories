@@ -2,14 +2,26 @@
     margin: 0;
     padding: 0;
 }
-.app{
-    width: 85%;
-    margin: 0 auto;
+button{
+    border: none;
+    cursor: pointer;
 }
 
+.bttn__link{
+    background-size: 25px;
+    background-repeat: no-repeat;
+    width: 25px;
+    height: 25px;
+}
+
+.app{
+    width: 90%;
+    margin: 0 auto;
+}
 
 @media screen and (max-width: 800px) {
     .app{
         width: 100%;
     }
 }
+

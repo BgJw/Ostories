@@ -15,9 +15,9 @@ const Header = () => {
 
     return (
         <>
-        <div className='header'>
+        <header className='header'>
             {/* navigator menu  */}
-            <div className='header__menu'></div>
+            <div className='header__menu bttn__link' />
 
             {/* navigator logo */}
             <div className='header__logo'>
@@ -38,7 +38,7 @@ const Header = () => {
                     />
                     <div 
                         onClick={ onChangeInput} 
-                        className='search-button'
+                        className='search-button bttn__link'
                         style={!showInput? {display: 'block'}: {display: 'none'} }
                     />
                     <div 
@@ -51,23 +51,23 @@ const Header = () => {
 
                 {/* navigation compare */}
                 <div className='header__options-compare'>
-                    <a href="/compare" className='compare-link'><div /></a>
+                    <a href="/compare" className='compare-link' ><div className='bttn__link'/></a>
                 </div>
 
                 {/* navigation favorites */}
                 <div className='header__options-favorites'>
-                    <a href="/favorites" className='favorites-link'><div /></a>
+                    <a href="/favorites" className='favorites-link'><div className='bttn__link'/></a>
                     <Badge amount={4}/>
                 </div>
 
                 {/* navigation cart */}
                 <div className='header__options-cart'>
-                    <a href="/cart" className='cart-link'><div /></a>
+                    <a href="/cart" className='cart-link'><div className='bttn__link'/></a>
                     <Badge amount={2}/>
                 </div>
             </div>
             {/* navigation  end  */}
-        </div>
+        </header>
         <hr />
         </>
     );

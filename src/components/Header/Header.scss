@@ -1,186 +1,180 @@
-.header{
+.header {
     display: grid;
-    grid-template-areas: 
-    "burger logo options";
+    grid-template-areas:
+        "burger logo options";
     grid-template-columns: 1fr 250px 1fr;
     align-items: center;
-    
+    height: 70px;
 
-    &__menu{
+    &__menu {
         grid-area: burger;
 
-
         background-image: url('../../assets/navigation/menu_FILL0_wght400_GRAD0_opsz48.png');
-        background-size: 25px;
-        background-repeat: no-repeat;
-        width: 25px;
-        height: 25px;
-
         cursor: pointer;
 
     }
-    &__logo{
+
+    &__logo {
         grid-area: logo;
         text-align: center;
     }
-    &__options{
-        grid-area: options;
-         display: flex;
-         gap: 10px;
-         align-items:center;
-         text-align: center;
-         justify-content: flex-end;
 
-        &-search{
+    &__options {
+        grid-area: options;
+        display: flex;
+        gap: 25px;
+        align-items: center;
+        text-align: center;
+        justify-content: flex-end;
+        opacity: 0.7;
+
+        &-search {
             display: flex;
             justify-content: center;
-            align-items:center;
+            align-items: center;
             text-align: center;
             max-width: 300px;
-            
-            .search-input{
+
+            .search-input {
                 width: 300px;
-                height: 40px;
+                height: 35px;
                 background-color: rgb(240, 235, 235);
                 border-radius: 5px;
                 border: none;
                 outline: none;
-
+                padding: 5px;
                 transition: width 1s;
             }
 
-            .search-button{
+            .search-button {
                 background-image: url('../../assets/navigation/search_FILL0_wght400_GRAD0_opsz48.png');
-                background-size: 25px;
-                background-repeat: no-repeat;
-                width: 25px;
-                height: 25px;
-
                 cursor: pointer;
             }
-            .search-close{
+
+            .search-close {
                 width: 25px;
                 font-size: 30px;
-                
+
                 cursor: pointer;
                 display: none;
             }
         }
-        &-compare{
-            .compare-link div{
+
+        &-compare {
+            position: relative;
+
+            .compare-link div {
                 background-image: url('../../assets/navigation/compare_FILL0_wght400_GRAD0_opsz48.png');
-                background-size: 25px;
-                background-repeat: no-repeat;
-                width: 25px;
-                height: 25px;
             }
         }
-        &-favorites{
+
+        &-favorites {
             position: relative;
-            .favorites-link div{
+
+            .favorites-link div {
                 background-image: url('../../assets/navigation/favorite_FILL0_wght400_GRAD0_opsz48.png');
-                background-size: 25px;
-                background-repeat: no-repeat;
-                width: 25px;
-                height: 25px;
             }
         }
-        &-cart{
+
+        &-cart {
             position: relative;
-            .cart-link div{
+
+            .cart-link div {
                 background-image: url('../../assets/navigation/shopping_cart_FILL0_wght400_GRAD0_opsz48.png');
-                background-size: 25px;
-                background-repeat: no-repeat;
-                width: 25px;
-                height: 25px;
             }
         }
     }
 }
-hr{
+
+
+hr {
     border-top: 1px solid rgba(132, 130, 130, 0.316);
 }
-.hide{
+
+.hide {
     display: none;
 }
-.show{
+
+.show {
     display: block;
 }
 
 
 @media screen and (max-width: 1024px) {
 
-    .header{
+    .header {
         grid-template-columns: 1fr 180px 1fr;
 
-        &__logo img{
+        &__logo img {
             width: 180px;
         }
 
-        &__options{
-            &-search{
-                .search-input{
+        &__options {
+            &-search {
+                .search-input {
                     width: 150px;
 
                 }
             }
-    }
+        }
     }
 }
 
 @media screen and (max-width: 800px) {
 
-    .app{
+    .header {
+        &__options {
 
-        .header{
-            &__options{
+            background-color: rgb(255, 255, 255);
+            position: fixed;
+            bottom: 0;
 
-                background-color:rgb(255, 255, 255);
-                position: absolute;
-                bottom: 0; 
+            width: 100%;
+            height: 70px;
 
-                width: 97%;
-                height: 70px;
-                margin-left: 10px;
-                margin-right: 10px;
-                justify-content:space-between;
+            justify-content: space-around;
+            z-index: 10;
+            opacity: 1;
 
-                &-search{
-                    .search-button{
-                        background-size: 40px;
-                        width: 40px;
-                        height: 40px;
-                    }
-                    .search-close{
-                        width: 40px;
-                        font-size: 45px;
-                        
-                    }
-                    .search-input{
-
-                    }
+            &-search {
+                .search-button {
+                    background-size: 40px;
+                    width: 40px;
+                    height: 40px;
                 }
-                &-favorites{
-                    .favorites-link div{
-                        background-size: 40px;
-                        width: 40px;
-                        height: 40px;
-                    }
-                }
-                &-compare{
-                    .compare-link div{
-                        background-size: 40px;
-                        width: 40px;
-                        height: 40px;
-                    }
 
+                .search-close {
+                    width: 40px;
+                    font-size: 45px;
                 }
-                &-cart{
-                    .cart-link div{
-                        background-size: 40px;
-                        width: 40px;
-                        height: 40px;
-                    }
+
+                .search-input {
+                    
+                }
+            }
+
+            &-favorites {
+                .favorites-link div {
+                    background-size: 40px;
+                    width: 40px;
+                    height: 40px;
+                }
+            }
+
+            &-compare {
+                .compare-link div {
+                    background-size: 40px;
+                    width: 40px;
+                    height: 40px;
+                }
+
+            }
+
+            &-cart {
+                .cart-link div {
+                    background-size: 40px;
+                    width: 40px;
+                    height: 40px;
                 }
             }
         }

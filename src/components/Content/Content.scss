@@ -1,0 +1,32 @@
+.content{
+
+    &__filter{
+        display: flex;
+        justify-content: center;
+        margin-bottom: 25px;
+        height: 40px;
+        gap: 8px;
+
+        &-button{
+            background-color: white;
+            color: rgb(128, 125, 125);                
+            font-size: 20px;
+
+            transition: all 1s;
+
+        }
+    }
+
+    &__products{
+        display: grid;
+        grid-template-columns: repeat(auto-fit, 270px);
+        grid-template-rows: 450px;
+        grid-row-gap: 100px;
+        justify-content: space-between;
+    }
+}
+
+.active{
+    border-bottom: 1px solid black;
+    color: black;
+}

@@ -1,6 +1,6 @@
 
 .modal{
-    position: absolute;
+    position: fixed;
 
     width: 100%;
     top: 0;
@@ -9,6 +9,8 @@
     right: 0;
     display: grid;
     background-color: black;
+    z-index: 90;
+
     &__bg{
         position: absolute;
         width: 100%;
@@ -16,7 +18,7 @@
         background-repeat: no-repeat;
         background-position: center center;
         background-size: cover;
-        z-index: 1;
+        z-index: 0;
         
         
         filter: blur(45px);
@@ -32,11 +34,9 @@
         height: 45px;
         font-size: 1rem;
         border-radius: 50%;
-        border: none;
 
         background-color: #FF6163;
         color: white;
-        cursor: pointer;
 
         transition: all 0.3s ease-in-out;
 
@@ -114,14 +114,65 @@
         &__carousel{
             grid-template-columns: repeat(auto-fit, 90px);
             &__items{
-                height: 110;
+                height: 110px;
             }
         }
     }
 }
 
+@media screen and (max-width: 1024px) {
+    .modal {
+
+        &__item{
+            grid-template-columns: 300px;
+
+            &-img{
+                height: 300px;
+            }
+        }
+
+        &__carousel{
+            grid-template-columns: repeat(auto-fit, 80px);
+            &__items{
+                height: 110px;
+            }
+        }
+    }
+}
+@media screen and (max-width: 768px) {
+
+
+    .modal {
+
+        &__item{
+            grid-template-columns: 300px;
+
+            &-img{
+                height: 300px;
+            }
+        }
+
+        &__carousel{
+            grid-template-columns: repeat(auto-fit, 50px);
+            &__items{
+                height: 60px;
+            }
+        }
+    }
+}
+
+
 @media screen and (max-width: 426px) {
     .modal {
+
+        &__item{
+            grid-template-columns: 400px;
+
+            &-img{
+                height: 400px;
+            }
+        }
+
         &__carousel{
             display: none;
         }

@@ -1,0 +1,110 @@
+.wrap{
+    display: grid;
+    grid-template-columns: repeat(2, 50%);
+    grid-column-gap: 40px;
+
+    &__photo{
+        position: relative;
+        
+        &-compare{
+            position: absolute;
+            top: 15px;
+            right: 15px;
+
+            background-color: white;
+            padding: 8px;
+            border-radius: 50%;
+            cursor: pointer;
+
+            &-bttn{
+                background-image: url('../../assets/navigation/compare_FILL0_wght400_GRAD0_opsz48.png');
+                background-color:rgba(255, 255, 255, 0);
+            }
+        }
+        &-img{
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+    }
+
+    &__information{
+
+        &__preview{
+                margin-top: 20px;
+                margin-bottom: 20px;
+            h2{
+                margin-bottom: 20px;
+            }    
+            &-price{
+                font-size: 32px;
+                font-weight: 900;
+            }
+        }
+
+        &__sizes{
+            display: flex;
+            margin-bottom: 20px;
+            margin-top: 10px;
+            &-bttn{
+                width: 50px;
+                height: 50px;
+                background-color:rgba(242, 240, 240, 0.578);
+                margin-right: 10px;
+                border-radius: 5px;
+                font-size: 18px;
+
+                &:hover{
+                    background-color:rgb(228, 228, 228);
+                }
+            }
+        }
+
+        &__buy{
+            display: flex;
+            align-items: center;
+
+
+            &-bttn{
+                width: 400px;
+                height: 60px;
+
+                border-radius: 5px;
+                background-color: #ff6163;
+                color: white;
+                font-size: 18px;
+                margin-right: 10px;
+                &:hover{
+                    background-color: #ff6164d9;
+                }
+            }
+            &-favorites{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 60px;
+                height: 60px;
+                background-color:rgba(242, 240, 240, 0.578);
+                border-radius: 5px;
+                button{
+                    background-image: url('../../assets/navigation/favorite_FILL0_wght400_GRAD0_opsz48.png');
+                    background-repeat: no-repeat;
+                    background-position: center center;
+                    background-color:rgba(228, 228, 228, 0);
+                    width: 40px;
+                    height: 40px;
+                    opacity: 0.5;
+                }
+
+                &.likes{
+                    opacity: 1;
+                    background-color: #ff6164d9;
+                    display: none;
+                    // example
+                }
+            }
+        }
+
+
+    }
+}
