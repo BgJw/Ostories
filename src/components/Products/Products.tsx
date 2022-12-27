@@ -1,4 +1,5 @@
 import './Products.scss';
+import { Link } from 'react-router-dom';
 
 const Products = () => {
     return (
@@ -8,9 +9,9 @@ const Products = () => {
                     <button className='product__img-buttons-notFavorites' />
                     <button className='product__img-buttons-favorites' />
                 </div>
-                <a href="/product">
+                <Link to="/product">
                     <img className='product__img-photo' src='https://images.unsplash.com/photo-1614676459401-34413f54cc73?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzOTIxNzV8MHwxfHNlYXJjaHwzfHxjbG90aGVzfGVufDB8MXx8YmxhY2t8MTY3MTg0MTg5MQ&ixlib=rb-4.0.3&q=80&w=1080' alt="" />
-                </a>
+                </Link>
             </div>
 
             <div className='product__preview'>

@@ -18,6 +18,11 @@ button{
     width: 90%;
     margin: 0 auto;
 }
+@media screen and (min-width: 1200px) {
+    .app{
+        width: 85%;
+    }
+}
 
 @media screen and (max-width: 800px) {
     .app{

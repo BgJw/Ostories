@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import Badge from '../Badge/Badge';
-
+import { Link } from 'react-router-dom';
 import './Header.scss';
 const logo = require('../../assets/logo/logo.svg');
 
@@ -21,9 +21,9 @@ const Header = () => {
 
             {/* navigator logo */}
             <div className='header__logo'>
-                <a href="/">
+                <Link to="/">
                     <img src={logo.default} alt="O stories" />
-                </a>
+                </Link>
             </div>
                 {/* navigator options start */}
             <div className='header__options'>
@@ -51,18 +51,18 @@ const Header = () => {
 
                 {/* navigation compare */}
                 <div className='header__options-compare'>
-                    <a href="/compare" className='compare-link' ><div className='bttn__link'/></a>
+                    <Link to="/compare" className='compare-link' ><div className='bttn__link'/></Link>
                 </div>
 
                 {/* navigation favorites */}
                 <div className='header__options-favorites'>
-                    <a href="/favorites" className='favorites-link'><div className='bttn__link'/></a>
+                    <Link to="/favorites" className='favorites-link'><div className='bttn__link'/></Link>
                     <Badge amount={4}/>
                 </div>
 
                 {/* navigation cart */}
                 <div className='header__options-cart'>
-                    <a href="/cart" className='cart-link'><div className='bttn__link'/></a>
+                    <Link to="/cart" className='cart-link'><div className='bttn__link'/></Link>
                     <Badge amount={2}/>
                 </div>
             </div>
