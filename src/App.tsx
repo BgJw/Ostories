@@ -9,12 +9,13 @@ import SingleProduct from './components/SingleProduct/SingleProduct';
 import ClothesService from './services/ClothesService';
 
 function App() {
- const {getClothesForMan} = ClothesService();
 
-  useEffect(() => {
-    getClothesForMan();
-  }, []);
+const {getClothesForMan} = ClothesService();
 
+
+useEffect(()=> {
+  getClothesForMan()
+}, [])
   return (
     <div className="app">
       <BrowserRouter>

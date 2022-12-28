@@ -1,41 +1,58 @@
-import { useState } from 'react';
+import { useEffect } from 'react';
+import { useAppDispatch, useAppSelector } from '../../Hooks/useDispatch_Selector';
+import { IClothesService } from '../../services/ClothesService';
+import { fetchClothesForMan,fetchClothesForWoman, changeActiveFilter } from '../../Slices/ProductSlice';
 import Products from '../Products/Products';
 import './Content.scss';
 
 
 
 const Content = () => {
-    const [activeClass, setActiveClass] = useState('Man');
+    const dispatch = useAppDispatch();
+    const {productsMan, productsWoman, activeFilter } = useAppSelector( state => state.ProductSlice);
 
-    const toggleActiveClass = ( nameButton: string) => {
-        setActiveClass(nameButton)
+    useEffect(()=> {
+        dispatch(fetchClothesForMan());
+    }, [] )
+
+
+
+    const filterProduct = (products: IClothesService[]): JSX.Element[]  => {
+        return products.map(product => (
+            <Products key={product.id} product={product} />
+        ))
     }
+    
 
     return (
         <main className='content'>
             {/* filter content  */}
             <div className='content__filter'>
-                <button 
-                    onClick={ () => toggleActiveClass('Man')} 
-                    className={activeClass === 'Man'? 'active content__filter-button': 'content__filter-button'}>
+                <button
+                    disabled={activeFilter === 'man'} 
+                    onClick={ () => {
+                            dispatch(changeActiveFilter('man'));
+                            dispatch(fetchClothesForMan());
+                        }} 
+                    className={activeFilter === 'man'? 'active content__filter-button': 'content__filter-button'}>
                         Man
                 </button>
-                <button 
-                    onClick={ () => toggleActiveClass('Woman')} 
-                    className={activeClass === 'Woman'? 'active content__filter-button': 'content__filter-button'}>
+                <button
+                    disabled={activeFilter === 'woman'}  
+                    onClick={ () => {
+                        dispatch(changeActiveFilter('woman'));
+                        dispatch(fetchClothesForWoman());
+                    }} 
+                    className={activeFilter === 'woman'? 'active content__filter-button': 'content__filter-button'}>
                         Woman
                 </button>
             </div>
 
             <div className='content__products'>
-                <Products />
-                <Products />
-                <Products />
-                <Products />
-                <Products />
-                <Products />
-                <Products />
-                <Products />
+
+                {
+                    activeFilter === 'man'? filterProduct(productsMan): filterProduct(productsWoman) 
+                }
             </div>
         </main>
     );

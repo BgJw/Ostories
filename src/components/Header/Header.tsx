@@ -52,6 +52,7 @@ const Header = () => {
                 {/* navigation compare */}
                 <div className='header__options-compare'>
                     <Link to="/compare" className='compare-link' ><div className='bttn__link'/></Link>
+                    <Badge amount={null} />
                 </div>
 
                 {/* navigation favorites */}

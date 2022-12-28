@@ -1,10 +1,10 @@
 import { createSlice, PayloadAction, createAsyncThunk } from '@reduxjs/toolkit';
-import ClothesService, { IPreviewGallery } from '../services/ClothesService';
+import ClothesService, { IClothesService } from '../services/ClothesService';
 
 interface IPreviewGallerySlice {
-    clothesList: IPreviewGallery[],
+    clothesList: IClothesService[],
     isOpenModal: boolean,
-    singleClothesModal: IPreviewGallery | undefined,
+    singleClothesModal: IClothesService | undefined,
     status: string,
 }
 
@@ -32,7 +32,7 @@ export const PreviewGallerySlice = createSlice({
         showModal: (state ) => {
             state.isOpenModal = true;
         },
-        setModalMainPhoto: (state, action: PayloadAction<IPreviewGallery>) => {
+        setModalMainPhoto: (state, action: PayloadAction<IClothesService>) => {
             state.singleClothesModal = action.payload;
         }
     },
