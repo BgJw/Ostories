@@ -1,12 +1,12 @@
 import './Badge.scss';
 
 interface IProps {
-    amount: number | null
+    amount: number
 }
 
 const Badge = ({amount}: IProps) => {
     return (
-        <span className='badge'>{amount}</span>
+        <span className='badge'>{amount > 0 && amount}</span>
     );
 };
 

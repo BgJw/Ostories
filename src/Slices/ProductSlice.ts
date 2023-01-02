@@ -9,12 +9,14 @@ interface IProducts {
     statusMan: Status,
     statusWoman: Status,
     activeFilter: Name,
+    singleProduct: IClothesService | undefined,
 }
 enum Status {
-    'idle',
-    'loading',
-    'error',
+    idle = 'idle',
+    loading = 'loading',
+    error = 'error',
 };
+
 type Name = 'man' | 'woman';
 
 export const fetchClothesForMan = createAsyncThunk(
@@ -34,6 +36,7 @@ const initialState: IProducts = {
     statusMan: Status.idle,
     statusWoman: Status.idle,
     activeFilter: 'man',
+    singleProduct: undefined,
 }
 
 export const ProductSlice = createSlice({
@@ -43,6 +46,9 @@ export const ProductSlice = createSlice({
         changeActiveFilter: (state, action: PayloadAction<Name>) => {
             state.activeFilter = action.payload;
         },
+        getSingleProduct: (state, action: PayloadAction<IClothesService>) => {
+            state.singleProduct = action.payload;
+        }
     },
     extraReducers(builder) {
         builder
@@ -72,7 +78,8 @@ export const ProductSlice = createSlice({
 });
 
 export const {
-    changeActiveFilter,
+        changeActiveFilter,
+        getSingleProduct
             } = ProductSlice.actions;
 
 export default ProductSlice.reducer;

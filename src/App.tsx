@@ -6,16 +6,22 @@ import Footer from './components/Footer/Footer';
 import Header from './components/Header/Header';
 import PreviewGallery from './components/PreviewGallery/PreviewGallery';
 import SingleProduct from './components/SingleProduct/SingleProduct';
-import ClothesService from './services/ClothesService';
+import ComparePage from './components/ComparePage/ComparePage';
+import { useAppDispatch } from './Hooks/useDispatch_Selector';
+import { fetchClothes,  } from './Slices/PreviewGallerySlice';
+import { fetchClothesForMan, fetchClothesForWoman } from './Slices/ProductSlice';
 
 function App() {
-
-const {getClothesForMan} = ClothesService();
+  const dispatch = useAppDispatch();
 
 
 useEffect(()=> {
-  getClothesForMan()
-}, [])
+  dispatch(fetchClothes());
+  dispatch(fetchClothesForMan());
+  dispatch(fetchClothesForWoman());
+
+}, []);
+
   return (
     <div className="app">
       <BrowserRouter>
@@ -32,6 +38,7 @@ useEffect(()=> {
           } path='/' />
 
           <Route element={<SingleProduct />} path={'/product'} />
+          <Route element={<ComparePage />} path={'/compare'} />
           <Route element={<div>Error</div>} path={'*'} />
         </Routes>
       </BrowserRouter>

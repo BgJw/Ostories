@@ -2,7 +2,9 @@
     display: grid;
     grid-template-columns: repeat(2, 50%);
     grid-column-gap: 40px;
-    margin-top: 30px; 
+    margin-top: 30px;
+    margin-bottom: 50px; 
+    
     &__photo{
         position: relative;
         
@@ -12,14 +14,24 @@
             right: 15px;
 
             background-color: white;
-            padding: 8px;
             border-radius: 50%;
             cursor: pointer;
 
-            &-bttn{
-                background-image: url('../../assets/navigation/compare_FILL0_wght400_GRAD0_opsz48.png');
+            &-bttnOf{
+                background-image: url('../../assets/navigation/compareOf.png');
                 background-color:rgba(255, 255, 255, 0);
+                background-position: center center;
+                padding: 20px;
+                border-radius: 50%;
             }
+            &-bttnOn{
+                background-image: url('../../assets/navigation/compareOn.png');
+                background-color:#ff6163;
+                background-position: center center;
+                padding: 20px;
+                border-radius: 50%;
+            }
+        
         }
         &-img{
             width: 100%;
@@ -33,19 +45,26 @@
         &__preview{
                 margin-top: 20px;
                 margin-bottom: 20px;
-            h2{
+            p{
                 margin-bottom: 20px;
+                font-size: 26px;
+                opacity: 0.7;
+
+                &::first-letter{
+                    text-transform: uppercase;
+                }
             }    
             &-price{
                 font-size: 32px;
-                font-weight: 900;
+                font-weight: 400;
+                opacity: 0.7;
             }
         }
 
         &__sizes{
             display: flex;
             margin-bottom: 20px;
-            margin-top: 10px;
+            margin-top: 20px;
             &-bttn{
                 width: 50px;
                 height: 50px;
@@ -63,7 +82,7 @@
         &__buy{
             display: flex;
             align-items: center;
-
+            margin-bottom: 20px;
 
             &-bttn{
                 width: 400px;
@@ -78,7 +97,7 @@
                     background-color: #ff6164d9;
                 }
             }
-            &-favorites{
+            &-favoritesOn{
                 display: flex;
                 justify-content: center;
                 align-items: center;
@@ -86,25 +105,56 @@
                 height: 60px;
                 background-color:rgba(242, 240, 240, 0.578);
                 border-radius: 5px;
-                button{
-                    background-image: url('../../assets/navigation/favorite_FILL0_wght400_GRAD0_opsz48.png');
-                    background-repeat: no-repeat;
-                    background-position: center center;
-                    background-color:rgba(228, 228, 228, 0);
-                    width: 40px;
-                    height: 40px;
-                    opacity: 0.5;
-                }
-
-                &.likes{
-                    opacity: 1;
-                    background-color: #ff6164d9;
-                    display: none;
-                    // example
-                }
+                font-size: 35px;
+                color:#ff6163;
+                
+            }
+            &-favoritesOf{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 60px;
+                height: 60px;
+                background-color:rgba(242, 240, 240, 0.578);
+                border-radius: 5px;
+                font-size: 35px;
+                
             }
         }
+        &__characteristic{
+            margin-top: 20px;
+            opacity: 0.9;
+            h4{
+                font-size: 22px;
+                font-weight: 100;
+                letter-spacing: 1px;
+            }
+            &__div{
+                    display: flex;
+                    justify-content:left;
+                    gap: 40px;
+                    margin-top: 20px;
 
+
+                &-country, &-material{
+                    width: 250px;
+                    small{
+                        opacity: 0.7;
+                        font-size: 14px;
+                    }
+                    p{
+                        font-size: 20px;
+                        margin-top: 10px;
+                        font-weight: 100;
+                    }
+                }
+
+                // &-country{
+                //     margin-right: 100px;
+                // }
+
+            }
+        }
 
     }
 }

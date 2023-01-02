@@ -1,10 +1,13 @@
 import { useState } from 'react';
 import Badge from '../Badge/Badge';
 import { Link } from 'react-router-dom';
+import { useAppSelector } from '../../Hooks/useDispatch_Selector';
+
 import './Header.scss';
-const logo = require('../../assets/logo/logo.svg');
+const logo = require('../../assets/logo/logo.svg').default;
 
 const Header = () => {
+    const {cart, compare, favorites} = useAppSelector( state => state.BadgeSlice);
     const [showInput, setShowInput] = useState(false);
 
     const onChangeInput: React.MouseEventHandler<HTMLDivElement> = () => {
@@ -22,7 +25,7 @@ const Header = () => {
             {/* navigator logo */}
             <div className='header__logo'>
                 <Link to="/">
-                    <img src={logo.default} alt="O stories" />
+                    <img src={logo} alt="O stories" />
                 </Link>
             </div>
                 {/* navigator options start */}
@@ -52,19 +55,19 @@ const Header = () => {
                 {/* navigation compare */}
                 <div className='header__options-compare'>
                     <Link to="/compare" className='compare-link' ><div className='bttn__link'/></Link>
-                    <Badge amount={null} />
+                    <Badge amount={compare.amount} />
                 </div>
 
                 {/* navigation favorites */}
                 <div className='header__options-favorites'>
-                    <Link to="/favorites" className='favorites-link'><div className='bttn__link'/></Link>
-                    <Badge amount={4}/>
+                    <Link to="/favorites" className='favorites-link'>&#9825;</Link>
+                    <Badge amount={favorites.amount}/>
                 </div>
 
                 {/* navigation cart */}
                 <div className='header__options-cart'>
                     <Link to="/cart" className='cart-link'><div className='bttn__link'/></Link>
-                    <Badge amount={2}/>
+                    <Badge amount={cart.amount}/>
                 </div>
             </div>
             {/* navigation  end  */}

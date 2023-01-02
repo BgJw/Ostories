@@ -26,7 +26,7 @@
         align-items: center;
         text-align: center;
         justify-content: flex-end;
-        opacity: 0.7;
+        opacity: 0.8;
 
         &-search {
             display: flex;
@@ -64,15 +64,16 @@
             position: relative;
 
             .compare-link div {
-                background-image: url('../../assets/navigation/compare_FILL0_wght400_GRAD0_opsz48.png');
+                background-image: url('../../assets/navigation/compareOf.png');
             }
         }
 
         &-favorites {
             position: relative;
 
-            .favorites-link div {
-                background-image: url('../../assets/navigation/favorite_FILL0_wght400_GRAD0_opsz48.png');
+            .favorites-link {
+                font-size: 35px;
+                color: black;
             }
         }
 
