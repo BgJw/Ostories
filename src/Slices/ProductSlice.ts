@@ -1,23 +1,9 @@
 
 
 import { createSlice, PayloadAction, createAsyncThunk } from '@reduxjs/toolkit';
-import ClothesService, { IClothesService } from '../services/ClothesService';
+import ClothesService from '../services/ClothesService';
+import { IClothesService, IProducts, Name, Status } from '../types/Types';
 
-interface IProducts {
-    productsMan: IClothesService[],
-    productsWoman: IClothesService[],
-    statusMan: Status,
-    statusWoman: Status,
-    activeFilter: Name,
-    singleProduct: IClothesService | undefined,
-}
-enum Status {
-    idle = 'idle',
-    loading = 'loading',
-    error = 'error',
-};
-
-type Name = 'man' | 'woman';
 
 export const fetchClothesForMan = createAsyncThunk(
     'products/fetchClothesForMan',

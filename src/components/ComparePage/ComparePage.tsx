@@ -1,24 +1,23 @@
-import React from 'react';
-import { useAppSelector } from '../../Hooks/useDispatch_Selector';
+import {useAppSelector } from '../../Hooks/useDispatch_Selector';
+import Component from './Component';
+
 import './ComparePage.scss';
 
 const ComparePage = () => {
     const {compare} = useAppSelector( state => state.BadgeSlice);
 
+
     return (
-        <div className='compare'>
+        <>
+        <h2 className='compare_h3'>Compare</h2>
+        <div className='container'>
             {
                 compare.data.map( el => (
-                    <div>
-                        <img src={el.urls.regular} alt={el.alt_description} />
-                        <div>
-                            <p>{el.price}</p>
-                            <p>{el.material}</p>
-                        </div>
-                    </div>
+                    <Component el={el} key={el.id} />
                 ))
             }
         </div>
+        </>
     );
 };
 

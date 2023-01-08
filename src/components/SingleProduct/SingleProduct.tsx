@@ -1,8 +1,8 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { useBadge } from '../../Hooks/useBadge';
-import { useAppDispatch, useAppSelector } from '../../Hooks/useDispatch_Selector';
-import { IClothesService } from '../../services/ClothesService';
-import { incrementBadge, decrementBadge, addDataBadge, removeDataBadge } from '../../Slices/BadgeSlice';
+import { useAppSelector } from '../../Hooks/useDispatch_Selector';
+import { BadgeType, IClothesService } from '../../types/Types';
+import MyButtons from '../MyButtons/MyButtons';
 import Spinner from '../Spinner/Spinner';
 import './SingleProduct.scss';
 
@@ -11,7 +11,6 @@ const SingleProduct = () => {
     const { compare, favorites } = useAppSelector(state => state.BadgeSlice);
     const compares = useBadge();
     const likes = useBadge();
-    const dispatch = useAppDispatch();
 
     useEffect(() => {
         compares.isCheckId(compare.data, singleProduct as IClothesService);
@@ -24,27 +23,15 @@ const SingleProduct = () => {
                 {/* start photo element */}
                 <div className='wrap__photo'>
                     <div className='wrap__photo-compare'>
-                        {
-                            !compares.badge ?
-                                <button
-                                    className='wrap__photo-compare-bttnOf bttn__link'
-                                    onClick={() => {
-                                        dispatch(incrementBadge('compare'));
-                                        dispatch(addDataBadge({ name: 'compare', data: singleProduct }));
-                                        compares.changeBadge();
-                                    }}
-                                />
-                                :
-                                <button
-                                    className='wrap__photo-compare-bttnOn bttn__link'
-                                    onClick={() => {
-                                        dispatch(decrementBadge('compare'))
-                                        dispatch(removeDataBadge({ name: 'compare', data: singleProduct }));
-                                        compares.changeBadge();
-
-                                    }}
-                                />
-                        }
+                    {
+                        <MyButtons
+                            styles={{on: 'wrap__photo-compare-bttnOf bttn__link', 
+                                     off: 'wrap__photo-compare-bttnOn bttn__link'}}
+                            name={compares}
+                            type={BadgeType.compare}
+                            product={singleProduct} 
+                        />
+                    }
                     </div>
                     <img className='wrap__photo-img' src={singleProduct?.urls.regular} alt={singleProduct?.alt_description} />
                 </div>
@@ -72,27 +59,17 @@ const SingleProduct = () => {
                         </button>
                         <div className='wrap__information__buy-favorites'>
 
-                            {
-                                !likes.badge ?
-                                    <button
-                                        onClick={() => {
-                                            dispatch(incrementBadge('favorites'))
-                                            dispatch(addDataBadge({ name: 'favorites', data: singleProduct }));
-                                            likes.changeBadge();
-                                        }}
-                                        className='wrap__information__buy-favoritesOf'>&#9825;
-                                    </button>
-                                    :
-                                    <button
-                                        onClick={() => {
-                                            dispatch(decrementBadge('favorites'))
-                                            dispatch(removeDataBadge({ name: 'favorites', data: singleProduct }));
-                                            likes.changeBadge()
-                                        }}
-                                        className='wrap__information__buy-favoritesOn'>&#10084;
-                                    </button>
-                            }
-
+                        {
+                        <MyButtons
+                            on='&#9825;'
+                            off='&#10084;'
+                            styles={{on: 'wrap__information__buy-favorites-Of', 
+                                     off: 'wrap__information__buy-favorites-On'}}
+                            name={likes}
+                            type={BadgeType.favorite}
+                            product={singleProduct} 
+                        />
+                    }
                         </div>
                     </div>
                     <hr />

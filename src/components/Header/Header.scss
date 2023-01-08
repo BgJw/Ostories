@@ -5,7 +5,7 @@
     grid-template-columns: 1fr 250px 1fr;
     align-items: center;
     height: 70px;
-
+    margin: 0px 5px;
     &__menu {
         grid-area: burger;
 
@@ -63,9 +63,12 @@
         &-compare {
             position: relative;
 
-            .compare-link div {
-                background-image: url('../../assets/navigation/compareOf.png');
-            }
+            background-image: url('../../assets/navigation/compareOf.png');
+            background-size: 25px;
+            background-repeat: no-repeat;
+            width: 25px;
+            height: 25px;
+
         }
 
         &-favorites {
@@ -75,14 +78,19 @@
                 font-size: 35px;
                 color: black;
             }
+            span{
+                top: 5px;
+                right: -11px;
+            }
         }
 
         &-cart {
             position: relative;
-
-            .cart-link div {
-                background-image: url('../../assets/navigation/shopping_cart_FILL0_wght400_GRAD0_opsz48.png');
-            }
+            background-image: url('../../assets/navigation/shopping_cart_FILL0_wght400_GRAD0_opsz48.png');
+            background-size: 25px;
+            background-repeat: no-repeat;
+            width: 25px;
+            height: 25px;
         }
     }
 }
@@ -131,12 +139,10 @@ hr {
             bottom: 0;
 
             width: 100%;
-            height: 70px;
-
+            height: 80px;
             justify-content: space-around;
             z-index: 10;
             opacity: 1;
-
             &-search {
                 .search-button {
                     background-size: 40px;
@@ -149,35 +155,8 @@ hr {
                     font-size: 45px;
                 }
 
-                .search-input {
-                    
-                }
             }
 
-            &-favorites {
-                .favorites-link div {
-                    background-size: 40px;
-                    width: 40px;
-                    height: 40px;
-                }
-            }
-
-            &-compare {
-                .compare-link div {
-                    background-size: 40px;
-                    width: 40px;
-                    height: 40px;
-                }
-
-            }
-
-            &-cart {
-                .cart-link div {
-                    background-size: 40px;
-                    width: 40px;
-                    height: 40px;
-                }
-            }
         }
     }
 }

@@ -1,12 +1,11 @@
 import { Link } from 'react-router-dom';
 import { useEffect } from 'react';
-import { IClothesService } from '../../services/ClothesService';
 import { useAppDispatch, useAppSelector } from '../../Hooks/useDispatch_Selector';
-import { incrementBadge, decrementBadge, addDataBadge, removeDataBadge } from '../../Slices/BadgeSlice';
-
 import { getSingleProduct } from '../../Slices/ProductSlice';
 import { useBadge } from '../../Hooks/useBadge';
 import './Products.scss';
+import MyButtons from '../MyButtons/MyButtons';
+import { BadgeType, IClothesService } from '../../types/Types';
 
 interface IProduct {
     product: IClothesService
@@ -14,43 +13,30 @@ interface IProduct {
 
 const Products = ({product}: IProduct) => {
     const {favorites} = useAppSelector( state => state.BadgeSlice );
-    const {badge, changeBadge, isCheckId } = useBadge();
+    const likes = useBadge();
     const dispatch = useAppDispatch();
 
 
     useEffect(() => {
-        isCheckId(favorites.data, product );
+        likes.isCheckId(favorites.data, product );
     }, []);
     
     return (
         <div className='product'>
-            {
-     
-            // <Spinner />
-            }
+
             <div className='product__img'>
                 <div className='product__img-buttons'>
                     {
-                    !badge
-                    ?
-                    <button 
-                        className='product__img-buttons-favoritesOf' 
-                        onClick={() => {
-                            dispatch(incrementBadge('favorites'))
-                            dispatch(addDataBadge({name:'favorites', data: product}))
-                            changeBadge();
-                        }}
-                    >&#9825;</button>
-                    :
-                    <button 
-                        className='product__img-buttons-favoritesOn' 
-                        onClick={() => {
-                            dispatch(decrementBadge('favorites'));
-                            dispatch(removeDataBadge({name: 'favorites', data: product}))
-                            changeBadge()
-                        }}
-                    >&#10084;</button>
+                        <MyButtons
+                            on='&#9825;'
+                            off='&#10084;'
+                            styles={{on: 'product__img-buttons-favoritesOf', off: 'product__img-buttons-favoritesOn'}}
+                            name={likes}
+                            type={BadgeType.favorite}
+                            product={product} 
+                        />
                     }
+
                 </div>
                 <Link to="/product">
                     <img

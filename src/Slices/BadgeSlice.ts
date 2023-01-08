@@ -1,25 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { IClothesService } from "../services/ClothesService";
+import { BadgeType, DataBadge, IBadgeSlice } from "../types/Types";
 
 
-interface IBadgeSlice {
-    favorites: {
-        amount: number,
-        data: IClothesService[]
-    },
-    cart: {
-        amount: number,
-        data: IClothesService[]
-    },
-    compare: {
-        amount: number,
-        data: IClothesService[]
-    }
-}
- interface DataBadge {
-    name: string, 
-    data: IClothesService | undefined
- }
 const initialState: IBadgeSlice = {
     favorites: {
         amount: 0,
@@ -41,10 +23,10 @@ export const BadgeSlice = createSlice({
     name: 'badge',
     initialState,
     reducers: {
-        incrementBadge: (state, {payload}: PayloadAction<string>) => {
+        incrementBadge: (state, {payload}: PayloadAction<BadgeType>) => {
             state[payload as key].amount++ ;
         },
-        decrementBadge: (state, {payload}: PayloadAction<string>) => {
+        decrementBadge: (state, {payload}: PayloadAction<BadgeType>) => {
             state[payload as key].amount-- ;
         },
         addDataBadge: (state, {payload}: PayloadAction<DataBadge>) => {

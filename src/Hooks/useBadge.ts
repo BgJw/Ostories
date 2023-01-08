@@ -1,5 +1,5 @@
 import {useState} from 'react';
-import { IClothesService } from '../services/ClothesService';
+import { IClothesService } from '../types/Types';
 
 
 export const useBadge = ( ) => {
@@ -7,15 +7,11 @@ export const useBadge = ( ) => {
     const [badge, setbadge] = useState<boolean>(false);
 
 
-    const changeBadge = () => setbadge( badge => !badge);
+    const changeBadge = (): void => setbadge( badge => !badge);
 
-    const isCheckId = (data: IClothesService[], product: IClothesService) => {
-        data.map( el => {
-            if(el.id === product.id){
-                changeBadge();
-            } 
-        })
-    }
+    const isCheckId = (data: IClothesService[], product: IClothesService): void => { 
+                       data.find(el => el.id === product.id && changeBadge()) 
+                    };
 
     return {
         badge,

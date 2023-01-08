@@ -1,21 +1,19 @@
-import { useEffect } from 'react';
+
 import { useAppDispatch, useAppSelector } from '../../Hooks/useDispatch_Selector';
-import { IClothesService } from '../../services/ClothesService';
-import { fetchClothesForMan, fetchClothesForWoman, changeActiveFilter } from '../../Slices/ProductSlice';
+import { changeActiveFilter } from '../../Slices/ProductSlice';
+import { IClothesService, Status } from '../../types/Types';
 import Products from '../Products/Products';
 import Spinner from '../Spinner/Spinner';
+
 import './Content.scss';
 
 
 
 const Content = () => {
     const dispatch = useAppDispatch();
-    const { productsMan, productsWoman, activeFilter, statusMan, statusWoman } = useAppSelector(state => state.ProductSlice);
+    const { productsMan, productsWoman, activeFilter, statusMan, statusWoman } = 
+                                                        useAppSelector(state => state.ProductSlice);
 
-    // useEffect(() => {
-    //     dispatch(fetchClothesForMan());
-    //     dispatch(fetchClothesForWoman());
-    // }, [])
 
 
 
@@ -51,9 +49,9 @@ const Content = () => {
             <div className='content__products'>
                 {
                     activeFilter === 'man' ?
-                        statusMan === 'idle' ? filterProduct(productsMan) : <Spinner />
+                        statusMan === Status.idle ? filterProduct(productsMan) : <Spinner />
                         :
-                        statusWoman === 'idle' ? filterProduct(productsWoman) : <Spinner />
+                        statusWoman === Status.idle ? filterProduct(productsWoman) : <Spinner />
                 }
             </div>
         </main>

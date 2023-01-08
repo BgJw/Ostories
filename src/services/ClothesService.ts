@@ -1,16 +1,6 @@
+import { IClothesService } from "../types/Types";
 
 
-export interface IClothesService {
-    readonly "id": string,
-    readonly "alt_description": string,
-    readonly 'price'?: number,
-    readonly 'country'?: string,
-    readonly 'material'?: string,
-    readonly "urls": {
-        readonly "thumb": string,
-        readonly 'regular': string
-    },
-}
 
 const ClothesService = () => {
     const BASE_API = 'https://api.unsplash.com/';
@@ -23,7 +13,6 @@ const ClothesService = () => {
         return Math.floor(Math.random() * (max - min + 1) + min)};
 
     const getClothesForPreviewGallery = async (): Promise<IClothesService[] | undefined> => {
-        console.log('Effect gallery');
         
         const res = await fetch(`${BASE_API}/search/photos/?${API_KEY}&color=black&query=clothes&orientation=portrait`);
 
@@ -35,13 +24,13 @@ const ClothesService = () => {
     };
 
     const getClothesForMan = async (): Promise<IClothesService[]>  => {
-        console.log('Effect 1');
+
         const res = await fetch(`${BASE_API}/search/photos/?${API_KEY}&page=2&query=man clothes&orientation=portrait`);
         const data: {results: IClothesService[]} = await res.json();
             return transformData(data.results);
     };
     const getClothesForWomen = async (): Promise<IClothesService[]>  => {
-        console.log('Effect 2');
+
         const res = await fetch(`${BASE_API}/search/photos/?${API_KEY}&query=woman clothes&orientation=portrait`);
         const data: {results: IClothesService[]} = await res.json();
             return transformData(data.results);

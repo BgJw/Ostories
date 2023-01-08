@@ -2,8 +2,8 @@
     margin: 0;
     padding: 0;
     text-decoration: none;
-    // font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    box-sizing: border-box;
 }
 button{
     border: none;
@@ -21,6 +21,7 @@ button{
     width: 90%;
     margin: 0 auto;
 }
+
 @media screen and (min-width: 1200px) {
     .app{
         width: 85%;

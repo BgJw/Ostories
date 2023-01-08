@@ -1,12 +1,8 @@
 import { createSlice, PayloadAction, createAsyncThunk } from '@reduxjs/toolkit';
-import ClothesService, { IClothesService } from '../services/ClothesService';
+import ClothesService from '../services/ClothesService';
+import { IClothesService, IPreviewGallerySlice, Status } from '../types/Types';
 
-interface IPreviewGallerySlice {
-    clothesList: IClothesService[],
-    isOpenModal: boolean,
-    singleClothesModal: IClothesService | undefined,
-    status: string,
-}
+
 
 export const fetchClothes = createAsyncThunk(
     'previewGallery/fetchClothes',
@@ -19,7 +15,7 @@ const initialState: IPreviewGallerySlice = {
     clothesList: [],
     isOpenModal: false,
     singleClothesModal: undefined,
-    status: 'idle'
+    status: Status.idle
 }
 
 export const PreviewGallerySlice = createSlice({
@@ -38,16 +34,16 @@ export const PreviewGallerySlice = createSlice({
     },
     extraReducers(builder) {
         builder.addCase(fetchClothes.pending, state => {
-            state.status = 'loading';
+            state.status = Status.loading;
         })
         .addCase(fetchClothes.fulfilled, (state, action)=> {
             if(typeof action.payload !== "undefined"){
                 state.clothesList = action.payload;
-                state.status = 'idle';
+                state.status = Status.idle;
             };
         })
         .addCase(fetchClothes.rejected, state => {
-            state.status = 'error';
+            state.status = Status.error;
         })
         .addDefaultCase( () => {})
     },
