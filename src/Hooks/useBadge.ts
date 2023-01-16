@@ -1,17 +1,16 @@
 import {useState} from 'react';
 import { IClothesService } from '../types/Types';
 
-
 export const useBadge = ( ) => {
 
     const [badge, setbadge] = useState<boolean>(false);
 
-
     const changeBadge = (): void => setbadge( badge => !badge);
 
-    const isCheckId = (data: IClothesService[], product: IClothesService): void => { 
-                       data.find(el => el.id === product.id && changeBadge()) 
-                    };
+    const isCheckId = (data: IClothesService[], product: IClothesService) => { 
+          
+            data.find(el => el.id === product.id && changeBadge())
+        };
 
     return {
         badge,

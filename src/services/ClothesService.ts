@@ -35,6 +35,23 @@ const ClothesService = () => {
         const data: {results: IClothesService[]} = await res.json();
             return transformData(data.results);
     };
+    const getClothesForSingleProduct = async (id: string): Promise<IClothesService>  => {
+
+        const res = await fetch(`${BASE_API}/photos/${id}/?${API_KEY}`);
+        const data: IClothesService = await res.json();
+        return {
+            id: data.id,
+            alt_description: data.alt_description,
+            price: random(35, 150),
+            country: country[random(0, country.length -1)],
+            material: materials[random(0, materials.length -1)],
+            urls: {
+                thumb: data.urls.thumb,
+                regular: data.urls.regular
+            }
+        }
+            
+    };
 
 
 
@@ -59,6 +76,7 @@ const ClothesService = () => {
         getClothesForPreviewGallery,
         getClothesForMan,
         getClothesForWomen,
+        getClothesForSingleProduct,
     }
 
 };

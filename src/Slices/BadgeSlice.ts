@@ -24,25 +24,29 @@ export const BadgeSlice = createSlice({
     initialState,
     reducers: {
         incrementBadge: (state, {payload}: PayloadAction<BadgeType>) => {
-            state[payload as key].amount++ ;
+            if(state.compare.amount < 4){ 
+                state[payload as key].amount++;
+            };
         },
         decrementBadge: (state, {payload}: PayloadAction<BadgeType>) => {
-            state[payload as key].amount-- ;
+            state[payload as key].amount--;
         },
         addDataBadge: (state, {payload}: PayloadAction<DataBadge>) => {
-            payload.data && state[payload.name as key].data.push(payload.data)
+            if(state.compare.amount <= 4){
+                payload.data && state[payload.name as key].data.push(payload.data);
+            };
         },
-        removeDataBadge: (state, {payload}: PayloadAction<DataBadge>) => {
-                            
-            state[payload.name as key].data?.map((el, i) => {
+        removeDataBadge: (state, {payload}: PayloadAction<DataBadge>) => {         
+            state[payload.name as key].data.map((el, i) => {
                 if (el.id === payload.data?.id) {
                     state[payload.name as key].data.splice(i,1);
                 }
             })
         },
-         
+
     }
-})
+});
+  
 export const {incrementBadge, decrementBadge, addDataBadge, removeDataBadge} = BadgeSlice.actions;
 
 export default BadgeSlice.reducer;

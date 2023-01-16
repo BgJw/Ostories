@@ -1,7 +1,4 @@
 import { Link } from 'react-router-dom';
-import { useEffect } from 'react';
-import { useAppDispatch, useAppSelector } from '../../Hooks/useDispatch_Selector';
-import { getSingleProduct } from '../../Slices/ProductSlice';
 import { useBadge } from '../../Hooks/useBadge';
 import './Products.scss';
 import MyButtons from '../MyButtons/MyButtons';
@@ -12,14 +9,8 @@ interface IProduct {
 }
 
 const Products = ({product}: IProduct) => {
-    const {favorites} = useAppSelector( state => state.BadgeSlice );
     const likes = useBadge();
-    const dispatch = useAppDispatch();
 
-
-    useEffect(() => {
-        likes.isCheckId(favorites.data, product );
-    }, []);
     
     return (
         <div className='product'>
@@ -38,13 +29,12 @@ const Products = ({product}: IProduct) => {
                     }
 
                 </div>
-                <Link to="/product">
+                <Link to={`/product/${product.id}`}>
                     <img
                         className='product__img-photo' 
                         src={product.urls.regular} 
                         alt={product.alt_description} 
-                        onClick={() => dispatch(getSingleProduct(product))}
-                        />
+                    />
                 </Link>
             </div>
 
@@ -53,10 +43,7 @@ const Products = ({product}: IProduct) => {
                 <div className='product__preview-buy'>
                     <p className='product__preview-buy-price'>{product.price} $</p>
                     <div className='product__preview-buy-button'>
-                        <Link 
-                            to='/product'
-                            onClick={() => dispatch(getSingleProduct(product))}
-                        />
+                        <Link to={`/product/${product.id}`} />
                     </div>
                 </div>
             </div>

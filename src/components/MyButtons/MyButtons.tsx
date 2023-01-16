@@ -1,4 +1,5 @@
-import { useAppDispatch } from '../../Hooks/useDispatch_Selector';
+import { useEffect } from 'react';
+import { useAppDispatch, useAppSelector } from '../../Hooks/useDispatch_Selector';
 import { incrementBadge, decrementBadge, addDataBadge, removeDataBadge } from '../../Slices/BadgeSlice';
 import { BadgeType, IClothesService } from '../../types/Types';
 
@@ -19,9 +20,14 @@ interface IProps{
 }
 
 const MyButtons = ({ on, off, styles, name, type, product } : IProps) => {
-
-    
+    const {data} = useAppSelector(state => state.BadgeSlice[type]);
     const dispatch = useAppDispatch();
+    
+    useEffect(()=> {
+            name.isCheckId(data, product);
+    },[product])
+
+
 
     return (
         !name.badge?

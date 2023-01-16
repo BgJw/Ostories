@@ -22,7 +22,8 @@
         grid-template-columns: repeat(auto-fit, 270px);
         grid-template-rows: 450px;
         grid-row-gap: 100px;
-        justify-content: space-between;
+        grid-column-gap: 20px;
+        justify-content: center;
     }
 }
 
@@ -36,5 +37,5 @@
 
 .active{
     border-bottom: 1px solid black;
-    color: black;
+    color: black;       
 }

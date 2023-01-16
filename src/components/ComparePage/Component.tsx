@@ -1,6 +1,6 @@
-import { useEffect } from 'react';
+
+import { Link } from 'react-router-dom';
 import { useBadge } from '../../Hooks/useBadge';
-import { useAppSelector } from '../../Hooks/useDispatch_Selector';
 import { BadgeType, IClothesService } from '../../types/Types';
 import MyButtons from '../MyButtons/MyButtons';
 
@@ -9,17 +9,17 @@ interface IProps {
 };
 
 const Component = ({ el }: IProps) => {
-    const { favorites } = useAppSelector(state => state.BadgeSlice);
+
     const likes = useBadge();
     const compares = useBadge();
 
-    useEffect(() => {
-        likes.isCheckId(favorites.data, el);
-    }, []);
+
 
     return (
         <div className='compare'>
-            <img className='compare__img' src={el.urls.regular} alt={el.alt_description} />
+            <Link to={`/product/${el.id}`} >
+                <img className='compare__img' src={el.urls.regular} alt={el.alt_description} />
+            </Link>
             <div className='compare__information'>
                 <p className='compare__information-p'>{el.alt_description}</p>
                 <div className='compare__information-feather'>
@@ -31,13 +31,12 @@ const Component = ({ el }: IProps) => {
                 </div>
                 <div className='compare__information-bttn'>
                     {
-                        !compares.badge &&
                         <MyButtons
                             styles={{
                                 on: '',
                                 off: 'compare__information-bttn-remove'
                             }}
-                            name={{ ...compares, badge: true }}
+                            name={compares}
                             type={BadgeType.compare}
                             product={el}
                         />

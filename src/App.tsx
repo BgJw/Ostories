@@ -10,6 +10,7 @@ import ComparePage from './components/ComparePage/ComparePage';
 import { useAppDispatch } from './Hooks/useDispatch_Selector';
 import { fetchClothes,  } from './Slices/PreviewGallerySlice';
 import { fetchClothesForMan, fetchClothesForWoman } from './Slices/ProductSlice';
+import FavoritesPage from './components/FavoritesPage/FavoritesPage';
 
 function App() {
   const dispatch = useAppDispatch();
@@ -37,8 +38,9 @@ useEffect(()=> {
             </>
           } path='/' />
 
-          <Route element={<SingleProduct />} path={'/product'} />
+          <Route element={<SingleProduct />} path={'/product/:productId'} />
           <Route element={<ComparePage />} path={'/compare'} />
+          <Route element={<FavoritesPage />} path={'/favorites'}/>
           <Route element={<div>Error</div>} path={'*'} />
         </Routes>
       </BrowserRouter>

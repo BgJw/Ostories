@@ -62,8 +62,9 @@ export interface IProducts {
     productsWoman: IClothesService[],
     statusMan: Status,
     statusWoman: Status,
+    statusSingleProduct: Status,
     activeFilter: Name,
-    singleProduct: IClothesService | undefined,
+    singleProduct: IClothesService,
 }
 
 export type Name = 'man' | 'woman';
