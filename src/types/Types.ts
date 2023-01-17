@@ -49,7 +49,7 @@ export interface IBadgeSlice {
 export interface IPreviewGallerySlice {
     clothesList: IClothesService[],
     isOpenModal: boolean,
-    singleClothesModal: IClothesService | undefined,
+    singleClothesModal: IClothesService,
     status: Status,
 }
 

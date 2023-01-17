@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { useBadge } from '../../Hooks/useBadge';
 import { useAppDispatch, useAppSelector } from '../../Hooks/useDispatch_Selector';
 import { incrementBadge, decrementBadge, addDataBadge, removeDataBadge } from '../../Slices/BadgeSlice';
 import { BadgeType, IClothesService } from '../../types/Types';
@@ -10,33 +11,30 @@ interface IProps{
         on: string,
         off: string
     },
-    name: {
-       badge: boolean,
-       isCheckId: (data: IClothesService[], product: IClothesService) => void, 
-       changeBadge: () => void,
-    },
     type: BadgeType,
     product: IClothesService,
 }
 
-const MyButtons = ({ on, off, styles, name, type, product } : IProps) => {
+const MyButtons = ({ on, off, styles, type, product }: IProps) => {
+    const {badge, isCheckId, changeBadge} = useBadge();
     const {data} = useAppSelector(state => state.BadgeSlice[type]);
     const dispatch = useAppDispatch();
     
+    
     useEffect(()=> {
-            name.isCheckId(data, product);
+            isCheckId(data, product);
     },[product])
 
 
 
     return (
-        !name.badge?
+        !badge?
             <button 
                 className={styles.on}
                 onClick={ () => {
                     dispatch(incrementBadge(type))
                     dispatch(addDataBadge({name: type, data: product}))
-                    name.changeBadge()
+                    changeBadge()
                 }}
             >
             {on}
@@ -47,7 +45,7 @@ const MyButtons = ({ on, off, styles, name, type, product } : IProps) => {
                 onClick={ () => {
                     dispatch(decrementBadge(type));
                     dispatch(removeDataBadge({name: type, data: product}));
-                    name.changeBadge()
+                    changeBadge()
                 }}
             >
                 {off}

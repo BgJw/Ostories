@@ -12,14 +12,12 @@ const ClothesService = () => {
     const random = (min: number, max: number) =>  {
         return Math.floor(Math.random() * (max - min + 1) + min)};
 
-    const getClothesForPreviewGallery = async (): Promise<IClothesService[] | undefined> => {
+    const getClothesForPreviewGallery = async (): Promise<IClothesService[]> => {
         
         const res = await fetch(`${BASE_API}/search/photos/?${API_KEY}&color=black&query=clothes&orientation=portrait`);
 
-        if(res.ok){
             const data: {results: IClothesService[]} = await res.json();
             return transformData(data.results);
-    }
     
     };
 

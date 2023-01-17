@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { useAppSelector } from '../../Hooks/useDispatch_Selector';
 
 import './Header.scss';
-const logo = require('../../assets/logo/logo.svg').default;
+export const logo = require('../../assets/logo/logo.svg').default;
 
 const Header = () => {
     const { cart, compare, favorites } = useAppSelector(state => state.BadgeSlice);

@@ -23,8 +23,10 @@
             
             background-color: rgba(255, 255, 255, 0.564);
             border-radius: 50%;
-            cursor: pointer;
             
+            &:hover{
+                opacity: .7;
+            }
             &-favoritesOf{    
 
                 font-size: 35px;
@@ -88,8 +90,10 @@
                 
                 background-color: #ff6163;
                 border-radius: 50%;
-                cursor: pointer;
 
+                &:hover{
+                    opacity: .7;
+                }
 
                 a{
                     background-image: url('../../assets/navigation/outline_shopping_cart_white_24dp.png');

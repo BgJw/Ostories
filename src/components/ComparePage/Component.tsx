@@ -1,6 +1,4 @@
-
 import { Link } from 'react-router-dom';
-import { useBadge } from '../../Hooks/useBadge';
 import { BadgeType, IClothesService } from '../../types/Types';
 import MyButtons from '../MyButtons/MyButtons';
 
@@ -9,11 +7,6 @@ interface IProps {
 };
 
 const Component = ({ el }: IProps) => {
-
-    const likes = useBadge();
-    const compares = useBadge();
-
-
 
     return (
         <div className='compare'>
@@ -36,7 +29,6 @@ const Component = ({ el }: IProps) => {
                                 on: '',
                                 off: 'compare__information-bttn-remove'
                             }}
-                            name={compares}
                             type={BadgeType.compare}
                             product={el}
                         />
@@ -49,7 +41,6 @@ const Component = ({ el }: IProps) => {
                                 on: 'compare__information-bttn-off',
                                 off: 'compare__information-bttn-on'
                             }}
-                            name={likes}
                             type={BadgeType.favorite}
                             product={el}
                         />

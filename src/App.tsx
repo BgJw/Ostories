@@ -30,19 +30,23 @@ useEffect(()=> {
         <Header />
 
         <Routes>
-          <Route element={
-            <>
-              <PreviewGallery />
-              <Content />
-              <Footer />
-            </>
-          } path='/' />
+          <Route 
+              element={
+              <>
+                <PreviewGallery />
+                <Content />
+              </>} 
+              path='/' 
+          />
 
           <Route element={<SingleProduct />} path={'/product/:productId'} />
           <Route element={<ComparePage />} path={'/compare'} />
           <Route element={<FavoritesPage />} path={'/favorites'}/>
           <Route element={<div>Error</div>} path={'*'} />
         </Routes>
+        
+        <Footer />
+        
       </BrowserRouter>
 
     </div>

@@ -1,4 +1,4 @@
-import { useBadge } from '../../Hooks/useBadge';
+
 import { BadgeType, IClothesService } from '../../types/Types';
 import MyButtons from '../MyButtons/MyButtons';
 
@@ -7,10 +7,7 @@ interface IProps{
 }
 
 const Component = ({singleProduct}: IProps) => {
-    const compares = useBadge();
-    const likes = useBadge();
-    
-    
+
     return (
         <div className='wrap'>
                 {/* start photo element */}
@@ -22,7 +19,6 @@ const Component = ({singleProduct}: IProps) => {
                                     on: 'wrap__photo-compare-bttnOf bttn__link',
                                     off: 'wrap__photo-compare-bttnOn bttn__link'
                                 }}
-                                name={compares}
                                 type={BadgeType.compare}
                                 product={singleProduct}
                             />
@@ -62,7 +58,6 @@ const Component = ({singleProduct}: IProps) => {
                                         on: 'wrap__information__buy-favorites-Of',
                                         off: 'wrap__information__buy-favorites-On'
                                     }}
-                                    name={likes}
                                     type={BadgeType.favorite}
                                     product={singleProduct}
                                 />

@@ -14,7 +14,7 @@ export const fetchClothes = createAsyncThunk(
 const initialState: IPreviewGallerySlice = {
     clothesList: [],
     isOpenModal: false,
-    singleClothesModal: undefined,
+    singleClothesModal: {} as IClothesService,
     status: Status.idle
 }
 
@@ -25,7 +25,7 @@ export const PreviewGallerySlice = createSlice({
         hideModal: ( state ) => {
             state.isOpenModal = false;
         },
-        showModal: (state ) => {
+        showModal: ( state ) => {
             state.isOpenModal = true;
         },
         setModalMainPhoto: (state, action: PayloadAction<IClothesService>) => {
@@ -37,10 +37,9 @@ export const PreviewGallerySlice = createSlice({
             state.status = Status.loading;
         })
         .addCase(fetchClothes.fulfilled, (state, action)=> {
-            if(typeof action.payload !== "undefined"){
                 state.clothesList = action.payload;
                 state.status = Status.idle;
-            };
+
         })
         .addCase(fetchClothes.rejected, state => {
             state.status = Status.error;

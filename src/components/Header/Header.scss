@@ -28,6 +28,21 @@
         justify-content: flex-end;
         opacity: 0.8;
 
+        &-compare, .favorites-link, &-cart, .search-button {
+            &:before{
+                content: '';
+                position: absolute;
+                left: 0;
+                bottom: -10px;
+                border-bottom: 1px solid #ff6163;
+                width: 0;
+                transition: all .7s;
+            }
+            &:hover:before{
+                width: 100%;
+            }
+
+        }
         &-search {
             display: flex;
             justify-content: center;
@@ -49,6 +64,7 @@
             .search-button {
                 background-image: url('../../assets/navigation/search_FILL0_wght400_GRAD0_opsz48.png');
                 cursor: pointer;
+                position: relative;
             }
 
             .search-close {
@@ -73,13 +89,16 @@
 
         &-favorites {
             position: relative;
-
+            display: flex;
+            width: 25px;
+            height: 25px;
+            align-items: center;
+            
             .favorites-link {
                 font-size: 35px;
                 color: black;
             }
             span{
-                top: 5px;
                 right: -11px;
             }
         }
@@ -134,7 +153,7 @@ hr {
     .header {
         &__options {
 
-            background-color: rgb(255, 255, 255);
+            background-color: rgba(255, 255, 255, 0.941);
             position: fixed;
             bottom: 0;
 
@@ -143,6 +162,9 @@ hr {
             justify-content: space-around;
             z-index: 10;
             opacity: 1;
+
+
+            border-top: 1px solid rgba(132, 130, 130, 0.316);
             &-search {
                 .search-button {
                     background-size: 40px;

@@ -1,15 +1,15 @@
 .gallery{
-    overflow-x: auto;
+    overflow-x: hidden;
     width: 90%;
     margin: 0 auto;
     margin-top: 20px;
     margin-bottom: 20px;
     padding-bottom: 10px;
-    
     &::-webkit-scrollbar{
         height: 5px;
         border-radius:5px;    
         background-color: #dddddd;
+        
     }
     &::-webkit-scrollbar-thumb {
         background-color: #FF6163;

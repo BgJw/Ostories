@@ -1,23 +1,54 @@
-.content{
+.content {
 
-    &__filter{
+    &__filter {
         display: flex;
         justify-content: center;
         margin-bottom: 25px;
         height: 40px;
         gap: 15px;
 
-        &-button{
-            background-color: white;
-            color: rgb(128, 125, 125);                
-            font-size: 20px;
+        button {
+            position: relative;
 
-            transition: all 1s;
+            &:before {
+                content: '';
+                position: absolute;
+                left: 0;
+                bottom: 0;
+                border-bottom: 1px solid #ff6163;
+                width: 0;
+                transition: all .5s;
+            }
+
+            &:hover:before {
+                width: 100%;
+            }
+        }
+
+        button.active {
+            &:before {
+                content: '';
+                position: absolute;
+                left: 0;
+                bottom: 0;
+                border-bottom: 1px solid #ff6163;
+                width: 100%;
+            }
+
+            &:hover:before {
+                width: 100%;
+            }
+        }
+
+        &-button {
+            background-color: white;
+            color: rgb(128, 125, 125);
+            font-size: 20px;
 
         }
     }
 
-    &__products{
+    &__products {
         display: grid;
         grid-template-columns: repeat(auto-fit, 270px);
         grid-template-rows: 450px;
@@ -28,14 +59,12 @@
 }
 
 @media screen and (max-width: 800px) {
-    .content__products{
+    .content__products {
         justify-content: space-around;
     }
 }
 
 
-
-.active{
-    border-bottom: 1px solid black;
-    color: black;       
+.active {
+    color: black;
 }

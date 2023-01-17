@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom';
-import { useBadge } from '../../Hooks/useBadge';
 import './Products.scss';
 import MyButtons from '../MyButtons/MyButtons';
 import { BadgeType, IClothesService } from '../../types/Types';
@@ -9,8 +8,6 @@ interface IProduct {
 }
 
 const Products = ({product}: IProduct) => {
-    const likes = useBadge();
-
     
     return (
         <div className='product'>
@@ -22,7 +19,6 @@ const Products = ({product}: IProduct) => {
                             on='&#9825;'
                             off='&#10084;'
                             styles={{on: 'product__img-buttons-favoritesOf', off: 'product__img-buttons-favoritesOn'}}
-                            name={likes}
                             type={BadgeType.favorite}
                             product={product} 
                         />
