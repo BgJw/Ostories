@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { BadgeType, IClothesService } from '../../types/Types';
-import MyButtons from '../MyButtons/MyButtons';
+import MyButtons from '../../components/MyButtons/MyButtons';
 
 interface IProps {
     el: IClothesService
@@ -27,7 +27,7 @@ const Component = ({ el }: IProps) => {
                         <MyButtons
                             styles={{
                                 on: '',
-                                off: 'compare__information-bttn-remove'
+                                off: 'remove'
                             }}
                             type={BadgeType.compare}
                             product={el}
@@ -38,8 +38,8 @@ const Component = ({ el }: IProps) => {
                             on='&#9825;'
                             off='&#10084;'
                             styles={{
-                                on: 'compare__information-bttn-off',
-                                off: 'compare__information-bttn-on'
+                                on: 'off',
+                                off: 'on'
                             }}
                             type={BadgeType.favorite}
                             product={el}

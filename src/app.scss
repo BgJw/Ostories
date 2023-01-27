@@ -4,6 +4,7 @@
     text-decoration: none;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     box-sizing: border-box;
+    letter-spacing: 1px;
 }
 button{
     border: none;
@@ -18,13 +19,13 @@ button{
 }
 
 .app{
-    width: 90%;
+    width: 95%;
     margin: 0 auto;
 }
 
 @media screen and (min-width: 1200px) {
     .app{
-        width: 85%;
+        width: 90%;
     }
 }
 

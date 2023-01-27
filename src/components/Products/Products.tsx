@@ -13,18 +13,15 @@ const Products = ({product}: IProduct) => {
         <div className='product'>
 
             <div className='product__img'>
-                <div className='product__img-buttons'>
                     {
                         <MyButtons
                             on='&#9825;'
                             off='&#10084;'
-                            styles={{on: 'product__img-buttons-favoritesOf', off: 'product__img-buttons-favoritesOn'}}
+                            styles={{on: 'favoritesOf', off: 'favoritesOn'}}
                             type={BadgeType.favorite}
                             product={product} 
                         />
                     }
-
-                </div>
                 <Link to={`/product/${product.id}`}>
                     <img
                         className='product__img-photo' 
@@ -37,10 +34,8 @@ const Products = ({product}: IProduct) => {
             <div className='product__preview'>
                 <div className='product__preview-title'>{product.alt_description}</div>
                 <div className='product__preview-buy'>
-                    <p className='product__preview-buy-price'>{product.price} $</p>
-                    <div className='product__preview-buy-button'>
-                        <Link to={`/product/${product.id}`} />
-                    </div>
+                    <p>{product.price} $</p>
+                    <Link to={`/product/${product.id}`} />
                 </div>
             </div>
         </div>

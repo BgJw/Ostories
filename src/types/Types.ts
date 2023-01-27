@@ -7,6 +7,7 @@ export interface IClothesService {
     readonly 'price'?: number,
     readonly 'country'?: string,
     readonly 'material'?: string,
+    readonly 'sizes'?: string[],
     readonly "urls": {
         readonly "thumb": string,
         readonly 'regular': string
@@ -44,7 +45,7 @@ export interface IBadgeSlice {
 }
 
 
-// interface for Gallery Slice !
+// interface for Gallery Slice
 
 export interface IPreviewGallerySlice {
     clothesList: IClothesService[],

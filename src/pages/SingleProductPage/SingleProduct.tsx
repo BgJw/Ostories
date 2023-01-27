@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../Hooks/useDispatch_Selector';
 import { fetchClothesForSingleProduct} from '../../Slices/ProductSlice';
 import { Status } from '../../types/Types';
-import Spinner from '../Spinner/Spinner';
+import Spinner from '../../components/Spinner/Spinner';
 import Component from './Component';
 import './SingleProduct.scss';
 
@@ -21,10 +21,10 @@ const SingleProduct = () => {
     return (
         <>
         {statusSingleProduct === Status.loading && <Spinner />}
-        {statusSingleProduct === Status.error && <div>...error</div>  }
+        {statusSingleProduct === Status.error && <p> pls reload </p> }
         {statusSingleProduct === Status.idle &&
             <Component singleProduct={singleProduct}  />            
-    }
+        }
     </>
     )
 };

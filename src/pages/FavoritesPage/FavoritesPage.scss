@@ -6,7 +6,6 @@
 .favorites {
     display: grid;
     grid-template-columns: repeat(auto-fit, 270px);
-    grid-template-rows: 500px;
     grid-row-gap: 20px;
     grid-column-gap: 20px;
 

@@ -1,30 +1,32 @@
-
+import { sizes } from '../../services/ClothesService';
 import { BadgeType, IClothesService } from '../../types/Types';
-import MyButtons from '../MyButtons/MyButtons';
+import Breadcrumbs from '../../components/Breadcrumbs/Breadcrumbs';
+import MyButtons from '../../components/MyButtons/MyButtons';
 
-interface IProps{
-    singleProduct: IClothesService
+interface IProps {
+    singleProduct: IClothesService,
 }
 
-const Component = ({singleProduct}: IProps) => {
+const Component = ({ singleProduct }: IProps) => {
 
     return (
-        <div className='wrap'>
-                {/* start photo element */}
+        <>
+            <Breadcrumbs />
+            {/* start photo element */}
+            <div className='wrap'>
                 <div className='wrap__photo'>
-                    <div className='wrap__photo-compare'>
                         {
                             <MyButtons
                                 styles={{
-                                    on: 'wrap__photo-compare-bttnOf bttn__link',
-                                    off: 'wrap__photo-compare-bttnOn bttn__link'
+                                    on: 'wrap__photo-bttnOf bttn__link',
+                                    off: 'wrap__photo-bttnOn bttn__link'
                                 }}
                                 type={BadgeType.compare}
                                 product={singleProduct}
                             />
                         }
-                    </div>
-                    <img className='wrap__photo-img' src={singleProduct.urls.regular} alt={singleProduct.alt_description} />
+                    <img className='wrap__photo-img' src={singleProduct.urls.regular} 
+                                                     alt={singleProduct.alt_description} />
                 </div>
                 {/* End photo element */}
 
@@ -37,10 +39,16 @@ const Component = ({singleProduct}: IProps) => {
                     {/* Size */}
                     Sizing
                     <div className='wrap__information__sizes'>
-                        <button className='wrap__information__sizes-bttn'>S</button>
-                        <button className='wrap__information__sizes-bttn'>M</button>
-                        <button className='wrap__information__sizes-bttn'>L</button>
-                        <button className='wrap__information__sizes-bttn'>XL</button>
+                        {
+                            sizes.map( (el, i) => (
+                                <button
+                                    key={el + i} 
+                                    className={`wrap__information__sizes-bttn ${singleProduct.sizes?.includes(el) && ' isSize'}`}>
+                                        {el}
+                                </button>
+
+                            ))
+                        }
                     </div>
 
                     <div className='wrap__information__buy'>
@@ -80,8 +88,9 @@ const Component = ({singleProduct}: IProps) => {
                         </div>
                     </div>
                 </div>
-                {/* end information */}
             </div>
+            {/* end information */}
+        </>
     );
 };
 

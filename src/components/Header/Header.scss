@@ -2,114 +2,82 @@
     display: grid;
     grid-template-areas:
         "burger logo options";
-    grid-template-columns: 1fr 250px 1fr;
+    grid-template-columns: 1fr 240px 1fr;
     align-items: center;
     height: 70px;
     margin: 0px 5px;
+
     &__menu {
         grid-area: burger;
-
         background-image: url('../../assets/navigation/menu_FILL0_wght400_GRAD0_opsz48.png');
-        cursor: pointer;
+        background-color: white;
 
     }
 
     &__logo {
         grid-area: logo;
         text-align: center;
+
+        a img {
+            width: 90%;
+        }
     }
 
     &__options {
         grid-area: options;
         display: flex;
         gap: 25px;
-        align-items: center;
-        text-align: center;
         justify-content: flex-end;
-        opacity: 0.8;
 
-        &-compare, .favorites-link, &-cart, .search-button {
-            &:before{
+        .compare-link,
+        .favorites-link,
+        .cart-link,
+        .search-button {
+            &:before {
                 content: '';
                 position: absolute;
                 left: 0;
                 bottom: -10px;
-                border-bottom: 1px solid #ff6163;
                 width: 0;
+                border-bottom: 1px solid #ff6163;
                 transition: all .7s;
             }
-            &:hover:before{
+
+            &:hover:before {
                 width: 100%;
             }
-
-        }
-        &-search {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            max-width: 300px;
-
-            .search-input {
-                width: 300px;
-                height: 35px;
-                background-color: rgb(240, 235, 235);
-                border-radius: 5px;
-                border: none;
-                outline: none;
-                padding: 5px;
-                transition: width 1s;
-            }
-
-            .search-button {
-                background-image: url('../../assets/navigation/search_FILL0_wght400_GRAD0_opsz48.png');
-                cursor: pointer;
-                position: relative;
-            }
-
-            .search-close {
-                width: 25px;
-                font-size: 30px;
-
-                cursor: pointer;
-                display: none;
-            }
         }
 
-        &-compare {
+        a {
             position: relative;
-
-            background-image: url('../../assets/navigation/compareOf.png');
+            width: 25px;
+            height: 25px;
             background-size: 25px;
             background-repeat: no-repeat;
-            width: 25px;
-            height: 25px;
-
         }
 
-        &-favorites {
-            position: relative;
+        .search-button {
+            background-image: url('../../assets/navigation/search_FILL0_wght400_GRAD0_opsz48.png');
+        }
+
+        .compare-link {
+            background-image: url('../../assets/navigation/compareOf.png');
+        }
+
+        .favorites-link {
             display: flex;
-            width: 25px;
-            height: 25px;
             align-items: center;
-            
-            .favorites-link {
-                font-size: 35px;
-                color: black;
-            }
-            span{
+            color: black;
+
+            font-size: 35px;
+
+            span {
                 right: -11px;
             }
         }
 
-        &-cart {
-            position: relative;
+        .cart-link {
             background-image: url('../../assets/navigation/shopping_cart_FILL0_wght400_GRAD0_opsz48.png');
-            background-size: 25px;
-            background-repeat: no-repeat;
-            width: 25px;
-            height: 25px;
         }
     }
 }
@@ -119,34 +87,6 @@ hr {
     border-top: 1px solid rgba(132, 130, 130, 0.316);
 }
 
-.hide {
-    display: none;
-}
-
-.show {
-    display: block;
-}
-
-
-@media screen and (max-width: 1024px) {
-
-    .header {
-        grid-template-columns: 1fr 180px 1fr;
-
-        &__logo img {
-            width: 180px;
-        }
-
-        &__options {
-            &-search {
-                .search-input {
-                    width: 150px;
-
-                }
-            }
-        }
-    }
-}
 
 @media screen and (max-width: 800px) {
 
@@ -160,25 +100,11 @@ hr {
             width: 100%;
             height: 80px;
             justify-content: space-around;
+            align-items: center;
             z-index: 10;
             opacity: 1;
 
-
-            border-top: 1px solid rgba(132, 130, 130, 0.316);
-            &-search {
-                .search-button {
-                    background-size: 40px;
-                    width: 40px;
-                    height: 40px;
-                }
-
-                .search-close {
-                    width: 40px;
-                    font-size: 45px;
-                }
-
-            }
-
+            border-top: 1px solid rgba(132, 130, 130, 0.119);
         }
     }
 }

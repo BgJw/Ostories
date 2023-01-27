@@ -4,11 +4,11 @@ import { IClothesService, Status } from '../../types/Types';
 import Products from '../Products/Products';
 import Spinner from '../Spinner/Spinner';
 
-import './Content.scss';
+import './MainContent.scss';
 
 
 
-const Content = () => {
+const MainContent = () => {
     const dispatch = useAppDispatch();
     const { productsMan, productsWoman, activeFilter, statusMan, statusWoman } = 
                                                         useAppSelector(state => state.ProductSlice);
@@ -16,7 +16,7 @@ const Content = () => {
 
 
 
-    const filterProduct = (products: IClothesService[]): JSX.Element[] => {
+    const filterProduct = (products: IClothesService[]): JSX.Element[] | any => {
         return products.map(product => (
             <Products key={product.id} product={product} />
         ))
@@ -48,13 +48,21 @@ const Content = () => {
             <div className='content__products'>
                 {
                     activeFilter === 'man' ?
-                        statusMan === Status.idle ? filterProduct(productsMan) : <Spinner />
+                        <>
+                        {statusMan === Status.idle && filterProduct(productsMan)}
+                        {statusMan === Status.error && <p>pls reload </p>}
+                        {statusMan === Status.loading && <Spinner />}
+                        </>
                         :
-                        statusWoman === Status.idle ? filterProduct(productsWoman) : <Spinner />
+                        <>
+                        {statusWoman === Status.idle && filterProduct(productsWoman)}
+                        {statusWoman === Status.error && <p>pls reload </p>}
+                        {statusWoman === Status.loading && <Spinner />}
+                        </>
                 }
             </div>
         </main>
     );
 };
 
-export default Content;
+export default MainContent;

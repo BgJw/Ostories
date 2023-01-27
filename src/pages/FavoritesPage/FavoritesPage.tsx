@@ -1,8 +1,7 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 import { useAppSelector } from '../../Hooks/useDispatch_Selector';
 import { BadgeType } from '../../types/Types';
-import MyButtons from '../MyButtons/MyButtons';
+import MyButtons from '../../components/MyButtons/MyButtons';
 import './FavoritesPage.scss';
 
 const FavoritesPage = () => {
@@ -12,7 +11,9 @@ const FavoritesPage = () => {
         <>
             <h2 className='favorites_h3'>Favorites</h2>
             <div className='favorites'>
+                
                 {favorites.data.length ?
+
                     favorites.data.map(el => (
                         <div key={el.id} className='favorites__content'>
                             <MyButtons

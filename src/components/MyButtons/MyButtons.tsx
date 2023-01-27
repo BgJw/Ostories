@@ -16,6 +16,7 @@ interface IProps{
 }
 
 const MyButtons = ({ on, off, styles, type, product }: IProps) => {
+    
     const {badge, isCheckId, changeBadge} = useBadge();
     const {data} = useAppSelector(state => state.BadgeSlice[type]);
     const dispatch = useAppDispatch();

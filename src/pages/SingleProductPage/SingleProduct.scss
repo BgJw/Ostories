@@ -1,32 +1,25 @@
+
 .wrap{
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-column-gap: 40px;
-    margin-top: 30px;
-    margin-bottom: 70px; 
-    
+    grid-template-columns: repeat(2, minmax(300px, 1fr));
+    margin-bottom: 70px;
+    margin-top: 20px;
+
     &__photo{
         position: relative;
-        
-        &-compare{
-            position: absolute;
-            top: 15px;
-            right: 15px;
-
-            background-color: white;
-            border-radius: 50%;
-            cursor: pointer;
-
+        width: 90%;
             button{
+                position: absolute;
+                top: 15px;
+                right: 15px;
                 background-position: center center;
                 padding: 20px;
+                transition: background-image .5s, background-color .5s;
                 border-radius: 50%;
-                transition: all .3s;
 
             }
             &-bttnOf{
                 background-image: url('../../assets/navigation/compareOf.png');
-                background-color:rgba(255, 255, 255, 0);
 
                 &:hover{
                     outline: 1px solid #ff6163;
@@ -35,21 +28,17 @@
             &-bttnOn{
                 background-image: url('../../assets/navigation/compareOn.png');
                 background-color:#ff6163;
-
             }
         
+            &-img{
+                width: 100%;
+                border-radius: 10px;
+            }
         }
-        &-img{
-            width: 100%;
-            height: auto;
-            border-radius: 10px;
-        }
-    }
 
     &__information{
-
+        
         &__preview{
-                margin-top: 20px;
                 margin-bottom: 20px;
             p{
                 margin-bottom: 20px;
@@ -74,29 +63,46 @@
 
 
             &-bttn{
-                width: 50px;
-                height: 50px;
-                background-color:rgba(242, 240, 240, 0.578);
+                width: 40px;
+                height: 40px;
                 margin-right: 10px;
                 border-radius: 5px;
                 font-size: 18px;
-                transition: all 0.3s;
+                font-weight: 100;
+                transition: border 0.4s;
+
+                position: relative;
 
                 &:hover{
-                    background-color:rgb(228, 228, 228);
+                    background-color:rgb(225, 223, 223);
+                }
+
+                &.isSize{
+                    background-color:rgb(211, 210, 210);
+
+                    &:hover{
+                        &::after{
+                            content: 'We have this size for you';
+                            position: absolute;
+                            font-size: 10px;
+                            top: -15px;
+                            left: -20px;
+                            width: 130px;
+                        }
+                    }
                 }
             }
         }
 
         &__buy{
-            display: flex;
+            display: grid;
+            grid-template-columns: 50% 50px;
             align-items: center;
             margin-bottom: 20px;
 
 
             &-bttn{
-                width: 50%;
-                height: 60px;
+                height: 50px;
 
                 border-radius: 5px;
                 background-color: #ff6163;
@@ -116,8 +122,8 @@
                 align-items: center;
 
                 button{
-                    width: 60px;
-                    height: 60px;
+                    width: 50px;
+                    height: 50px;
                     background-color:rgba(242, 240, 240, 0.578);
                     border-radius: 5px;
                     font-size: 35px;
@@ -128,7 +134,6 @@
                     
                     &:hover{
                         color: #ff6164d9;
-
                     }
                 }
                 &-Of:hover{
@@ -142,17 +147,16 @@
             h4{
                 font-size: 22px;
                 font-weight: 100;
-                letter-spacing: 1px;
             }
             &__div{
-                    display: flex;
-                    justify-content:left;
+                    display: grid;
+                    grid-template-columns: repeat(2, 1fr);
+                    justify-content: left;
                     gap: 40px;
                     margin-top: 20px;
 
 
                 &-country, &-material{
-                    width: 250px;
                     small{
                         opacity: 0.7;
                         font-size: 14px;
@@ -163,11 +167,6 @@
                         font-weight: 100;
                     }
                 }
-
-                // &-country{
-                //     margin-right: 100px;
-                // }
-
             }
         }
 
@@ -177,28 +176,26 @@
 
 @media screen and (max-width: 1024px) {
     .wrap{
-        grid-template-columns: 1fr;
+        display: block;
 
-        text-align: center;
         &__photo{
-            width: 600px;
+            width: 50%;
             margin: 0 auto;
-
     }
+
         &__information{
-            padding: 10px;  
             text-align: center;
-            
-            &__sizes{
-                justify-content: center;
+
+            &__preview{
+                width: 90%;
+                margin: 0 auto;
+                margin-bottom: 20px;
             }
             &__buy{
-                justify-content: center;
+                margin-left: 50px;
             }
-
-            &__characteristic{
-                display: grid;
-                place-items: center;
+            &__sizes, &__buy {
+                justify-content: center;
             }
         }
     }
