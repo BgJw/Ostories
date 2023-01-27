@@ -1,12 +1,11 @@
-import React from 'react';
 
 interface IProps {
     name: string,
     data: string[],
     isCheck: (e: {target: HTMLInputElement}, name: string) => void
-}
-const MyInput = ({name, data, isCheck}: IProps) => {
+};
 
+const MyInput = ({name, data, isCheck}: IProps) => {
 
 
     return (

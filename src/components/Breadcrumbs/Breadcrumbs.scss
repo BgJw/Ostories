@@ -1,4 +1,6 @@
 .bread{
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
     color:rgb(168, 165, 165);
     gap: 5px;

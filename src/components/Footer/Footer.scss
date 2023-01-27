@@ -1,7 +1,11 @@
 .footer{    
     &__position{
+        display: -webkit-box;
+        display: -ms-flexbox;
         display: flex;
-        justify-content: center;
+        -webkit-box-pack: center;
+            -ms-flex-pack: center;
+                justify-content: center;
         margin: 20px 0;
 
     }
@@ -21,7 +25,11 @@
         grid-template-columns: repeat(3, 60px);
         grid-column-gap: 40px;
 
-        justify-content: center;
+        -webkit-box-pack: center;
+
+            -ms-flex-pack: center;
+
+                justify-content: center;
         justify-items: center;
 
         margin: 20px 0;

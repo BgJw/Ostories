@@ -14,6 +14,8 @@
                 right: 15px;
                 background-position: center center;
                 padding: 20px;
+                -webkit-transition: background-image .5s, background-color .5s;
+                -o-transition: background-image .5s, background-color .5s;
                 transition: background-image .5s, background-color .5s;
                 border-radius: 50%;
 
@@ -57,6 +59,8 @@
         }
 
         &__sizes{
+            display: -webkit-box;
+            display: -ms-flexbox;
             display: flex;
             margin-bottom: 20px;
             margin-top: 20px;
@@ -69,6 +73,8 @@
                 border-radius: 5px;
                 font-size: 18px;
                 font-weight: 100;
+                -webkit-transition: border 0.4s;
+                -o-transition: border 0.4s;
                 transition: border 0.4s;
 
                 position: relative;
@@ -97,7 +103,9 @@
         &__buy{
             display: grid;
             grid-template-columns: 50% 50px;
-            align-items: center;
+            -webkit-box-align: center;
+                -ms-flex-align: center;
+                    align-items: center;
             margin-bottom: 20px;
 
 
@@ -109,6 +117,8 @@
                 color: white;
                 font-size: 18px;
                 margin-right: 10px;
+                -webkit-transition: all 0.4s;
+                -o-transition: all 0.4s;
                 transition: all 0.4s;
 
                 &:hover{
@@ -117,9 +127,15 @@
             }
 
             &-favorites{
+                display: -webkit-box;
+                display: -ms-flexbox;
                 display: flex;
-                justify-content: center;
-                align-items: center;
+                -webkit-box-pack: center;
+                    -ms-flex-pack: center;
+                        justify-content: center;
+                -webkit-box-align: center;
+                    -ms-flex-align: center;
+                        align-items: center;
 
                 button{
                     width: 50px;
@@ -127,6 +143,8 @@
                     background-color:rgba(242, 240, 240, 0.578);
                     border-radius: 5px;
                     font-size: 35px;
+                    -webkit-transition: all 0.4s;
+                    -o-transition: all 0.4s;
                     transition: all 0.4s;
                 }
                 &-On{
@@ -151,7 +169,9 @@
             &__div{
                     display: grid;
                     grid-template-columns: repeat(2, 1fr);
-                    justify-content: left;
+                    -webkit-box-pack: left;
+                        -ms-flex-pack: left;
+                            justify-content: left;
                     gap: 40px;
                     margin-top: 20px;
 
@@ -195,7 +215,9 @@
                 margin-left: 50px;
             }
             &__sizes, &__buy {
-                justify-content: center;
+                -webkit-box-pack: center;
+                    -ms-flex-pack: center;
+                        justify-content: center;
             }
         }
     }

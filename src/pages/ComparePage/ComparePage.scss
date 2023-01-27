@@ -7,7 +7,9 @@
 .container{
     display: grid;
     grid-template-columns: repeat(4, minmax(150px, 220px));
-    align-items: stretch;
+    -webkit-box-align: stretch;
+        -ms-flex-align: stretch;
+            align-items: stretch;
     grid-auto-flow: column;
     grid-auto-columns: minmax(150px, 220px);
 
@@ -53,10 +55,14 @@
         }
 
         &-feather{
+            display: -webkit-box;
+            display: -ms-flexbox;
             display: flex;
             width: 90%;
             margin: 0 auto;
-            justify-content: space-between;
+            -webkit-box-pack: justify;
+                -ms-flex-pack: justify;
+                    justify-content: space-between;
 
             div{
                 small{
@@ -70,9 +76,14 @@
             }
         }
         &-bttn{
+            display: -webkit-box;
+            display: -ms-flexbox;
             display: flex;
-            justify-content: space-around;
-            align-items: center;
+            -ms-flex-pack: distribute;
+                justify-content: space-around;
+            -webkit-box-align: center;
+                -ms-flex-align: center;
+                    align-items: center;
             margin: 20px 10px;
 
 
@@ -83,6 +94,8 @@
                 width: 30px;
                 height: 30px;
                 background-color: white;
+                -webkit-transition: background-image .4s, color .4s;
+                -o-transition: background-image .4s, color .4s;
                 transition: background-image .4s, color .4s;
             }
             .remove{

@@ -51,9 +51,13 @@
                 height: 20px;
             }
             &-buy{
+                display: -webkit-box;
+                display: -ms-flexbox;
                 display: flex;
                 padding: 15px;
-                justify-content: space-between;
+                -webkit-box-pack: justify;
+                    -ms-flex-pack: justify;
+                        justify-content: space-between;
                 text-align: center;
                 &-price{
                     font-size: 18px;

@@ -126,7 +126,6 @@ const FilterPage = () => {
 
             {isOpenFilter ?
                 <div className='filter__options'>
-                    <div className='filter__options__left'>
                         {/* filter Price and Size */}
                         <div className='price'>
                             <p>
@@ -157,9 +156,8 @@ const FilterPage = () => {
                             />
                         </div>
 
-                    </div>
+
                     {/* Filter Country and material  */}
-                    <div className='filter__options__container'>
                         <div>
                         <MyInput 
                                 data={country} 
@@ -176,7 +174,6 @@ const FilterPage = () => {
                         </div>
 
                     </div>
-                </div>
                 :
                 <div className='bttnOptions'>
                     <button onClick={() => setIsOpenFilter(prev => !prev)} />
