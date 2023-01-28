@@ -8,7 +8,7 @@ import Products from '../../components/Products/Products';
 import './FilterPage.scss';
 import MyInput from './MyInput';
 
-interface IFilter {
+export interface IFilter {
     text: string,
     price: string,
     country: string[],
@@ -19,7 +19,6 @@ interface IFilter {
 const FilterPage = () => {
 
     const { productsMan, productsWoman } = useAppSelector(state => state.ProductSlice);
-
 
     const [copyData, setCopyData] = useState<IClothesService[]>([]);
 
@@ -37,37 +36,37 @@ const FilterPage = () => {
 
     const filterClothers = (data: IClothesService[]) => {
         let copy = [...data];
-        
+
         if (filterOptions.text.trim()) {
-            copy = copy.filter( el => el.alt_description.includes(filterOptions.text));  
+            copy = copy.filter(el => el.alt_description.includes(filterOptions.text));
         }
         if (filterOptions.price) {
-            copy = copy.filter( el => Number(el.price) <= Number(filterOptions.price))
+            copy = copy.filter(el => Number(el.price) <= Number(filterOptions.price))
         }
-        if (filterOptions.size.length > 0) {            
+        if (filterOptions.size.length > 0) {
 
             copy = isAvailabilityOptions(copy, filterOptions.size, 'sizes')
         }
-        if (filterOptions.country.length > 0) {       
+        if (filterOptions.country.length > 0) {
 
             copy = isAvailabilityOptions(copy, filterOptions.country, 'country')
         }
-        
-        if (filterOptions.material.length > 0) {            
+
+        if (filterOptions.material.length > 0) {
 
             copy = isAvailabilityOptions(copy, filterOptions.material, 'material')
         }
-                        
+
         setCopyData(copy);
     }
 
-    const isAvailabilityOptions = (data: IClothesService[], filter: string[], option: string  ) => {
+    const isAvailabilityOptions = (data: IClothesService[], filter: string[], option: string) => {
         type key = keyof IClothesService;
 
         const temp = [];
 
         for (let i = 0; i < data.length; i++) {
-                let s = data[i][option as key];
+            let s = data[i][option as key];
 
             if (filter.includes(String(s))) {
                 temp.push(data[i])
@@ -75,115 +74,105 @@ const FilterPage = () => {
         }
         return temp
     }
-    
-
-    const isCheck = (e: { target: HTMLInputElement; }, name: string) => {
-        type key = keyof typeof filterOptions;
-        let searchEl = filterOptions[name as key] as string[];
-        
-            
-        if (searchEl.includes(e.target.name)) {
-            
-            searchEl = searchEl.filter(size => size !== e.target.name);
-        } else {
-            searchEl.push(e.target.name)
-        }
-        
+    const clearAll = () => {
         setFilterOptions({
-            ...filterOptions,
-            [name] : searchEl
+            text: '',
+            price: '150',
+            size: [],
+            country: [],
+            material: [],
         });
+
     }
+
+
     useEffect(() => {
-        
-            filterClothers([...productsMan, ...productsWoman]);
+
+        filterClothers([...productsMan, ...productsWoman]);
 
     }, [filterOptions, productsMan, productsWoman]);
 
-    
+
     return (
         <div className='filter'>
             {/* links */}
             <Breadcrumbs />
 
             {/* filter Input */}
-            <div className={`filter__position ${filterOptions.text || isOpenFilter ? 'rows' : ''}`}>
+            <div className={`filter__position ${isOpenFilter ? 'active' : ''}`}>
                 <h2>How to filter things?</h2>
                 {/* search for filter products */}
                 <div className='filter__position__search'>
+                    <div className='bttnOptions'>
+                        <button onClick={() => setIsOpenFilter(prev => !prev)} />
+                    </div>
                     <input
                         value={filterOptions.text}
                         type="text"
                         placeholder='Search'
                         className='filter__position__search-input'
-                        onChange={(e) => {setFilterOptions({...filterOptions, text: e.target.value})}}
+                        onChange={(e) => { setFilterOptions({ ...filterOptions, text: e.target.value }) }}
                     />
                     <button
                         className='filter__position__search-bttn'
                     />
                 </div>
             </div>
-
-            {isOpenFilter ?
-                <div className='filter__options'>
-                        {/* filter Price and Size */}
-                        <div className='price'>
-                            <p>
-                                Price
-                            </p>
+                <div className={`filter__options ${isOpenFilter ? 'active' : ''}`}>
+                    <div className='price'>
+                        Price
+                        <input
+                            type="range"
+                            min={35}
+                            max={150}
+                            value={filterOptions.price}
+                            onChange={(e) => { setFilterOptions({ ...filterOptions, price: e.target.value }) }}
+                        />
+                        <div>
+                            Up to:
                             <input
-                                type="range"
-                                min={35}
-                                max={150}
+                                type="number"
                                 value={filterOptions.price}
-                                onChange={(e) => {setFilterOptions({ ...filterOptions, price: e.target.value })}}
-                            />
-                            <div>
-                                Up to:
-                                <input
-                                    type="number"
-                                    value={filterOptions.price}
-                                    onChange={(e) => setFilterOptions({ ...filterOptions, price: e.target.value })}
-                                />
-                            </div>
-                        </div>
-                
-                        <div className='size'>
-                            <MyInput 
-                                data={sizes} 
-                                isCheck={isCheck} 
-                                name='size' 
+                                onChange={(e) => setFilterOptions({ ...filterOptions, price: e.target.value })}
                             />
                         </div>
-
-
-                    {/* Filter Country and material  */}
-                        <div>
-                        <MyInput 
-                                data={country} 
-                                isCheck={isCheck} 
-                                name='country' 
-                            />
-                        </div>
-                        <div>
-                        <MyInput 
-                                data={materials} 
-                                isCheck={isCheck} 
-                                name='material' 
-                            />
-                        </div>
-
+                        <button
+                            className='bttnClearAll'
+                            onClick={clearAll}>
+                            Clear all
+                        </button>
                     </div>
-                :
-                <div className='bttnOptions'>
-                    <button onClick={() => setIsOpenFilter(prev => !prev)} />
-                    Filter
+                    {/* size  */}
+                    <MyInput
+                        data={sizes}
+                        name='size'
+                        filterOption={filterOptions}
+                        setFilter={setFilterOptions}
+                    />
+
+                    {/* country */}
+                    <MyInput
+                        data={country}
+                        name='country'
+                        filterOption={filterOptions}
+                        setFilter={setFilterOptions}
+                    />
+                    {/* material */}
+                    <MyInput
+                        data={materials}
+                        name='material'
+                        filterOption={filterOptions}
+                        setFilter={setFilterOptions}
+                    />
                 </div>
-            }
+                <>
+                    <hr />
+                </>
+
             <div className='filter__filteredProducts'>
                 {
                     copyData.map(product => (
-                         <Products key={product.id} product={product} />
+                        <Products key={product.id} product={product} />
                     ))
                 }
             </div>

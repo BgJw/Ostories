@@ -22,15 +22,39 @@
         transition: grid-template-rows 1s;
         transition: grid-template-rows 1s, -ms-grid-rows 1s;
 
-        &.rows {
-            grid-template-rows: 50px;
+        &.active{
+        grid-template-rows: 50px;
         }
+
 
         &__search {
             display: grid;
-            grid-template-columns: 1fr 50px;
+            grid-template-columns: 50px 1fr 50px;
+            
             width: 80%;
             margin: 20px auto;
+
+            .bttnOptions {
+                display: -webkit-box;
+                display: -ms-flexbox;
+                display: flex;
+                -webkit-box-align: center;
+                    -ms-flex-align: center;
+                        align-items: center;
+        
+                button {
+                    width: 35px;
+                    height: 35px;
+        
+                    background-color: transparent;
+                    background-image: url('../../assets//navigation/filter_icon.png');
+                    background-repeat: no-repeat;
+                    background-position: center center;
+                    background-size: 25px;
+        
+                }
+            }
+        
 
             &-input {
                 height: 35px;
@@ -59,6 +83,7 @@
                 background-size: 25px;
                 background-repeat: no-repeat;
                 background-position: center center;
+                border-radius: 0 5px 5px 0;
 
                 &:hover {
                     background-color: #ff6164d9;
@@ -69,48 +94,41 @@
 
     }
 
-    .bttnOptions {
-        width: 100%;
-        display: -webkit-box;
-        display: -ms-flexbox;
-        display: flex;
-        -webkit-box-align: center;
-            -ms-flex-align: center;
-                align-items: center;
-
-        button {
-            width: 35px;
-            height: 35px;
-
-            background-color: transparent;
-            background-image: url('../../assets//navigation/filter_icon.png');
-            background-repeat: no-repeat;
-            background-position: center center;
-            background-size: 25px;
-
-        }
-    }
-
     &__options {
         display: grid;
-        grid-template-columns: repeat(4, 25%);
-        grid-template-rows: 200px;
-
+        position: relative;
+        grid-template-columns: repeat(4, 15%);
+        grid-template-rows: 0;
+        -ms-flex-pack: distribute;
+            justify-content: space-around;
+        overflow: hidden;
+        -webkit-transition: grid-template-rows 1s ease-in-out;
+        -o-transition: grid-template-rows 1s ease-in-out;
+        transition: grid-template-rows 1s ease-in-out;
+        transition: grid-template-rows 1s ease-in-out, -ms-grid-rows 1s ease-in-out;
         
-
-        // &__left {
-        //     width: 50%;
-        //     display: grid;
-
-        //     grid-row-gap: 20px;
-
-            .price {
-
+        &.active{
+            grid-template-rows: 160px;
+        }  
+        .price {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-wrap: wrap;
+                flex-wrap: wrap;
+            -ms-flex-line-pack: start;
+                align-content: flex-start;
+            -webkit-box-pack: center;
+                -ms-flex-pack: center;
+                    justify-content: center;    
                 input[type=range] {
+                    width: 100%;
                     height: 32px;
                     -webkit-appearance: none;
+                       -moz-appearance: none;
+                            appearance: none;
                     margin: 10px 0;
-                    width: 70%;
+                    // width: 70%;
                 }
 
                 input[type=range]:focus {
@@ -121,7 +139,6 @@
                     width: 100%;
                     height: 5px;
                     cursor: pointer;
-                    animate: 0.2s;
                     -webkit-box-shadow: 0px 0px 0px #002200;
                             box-shadow: 0px 0px 0px #002200;
                     background: #CFCFCF;
@@ -149,7 +166,6 @@
                     width: 100%;
                     height: 5px;
                     cursor: pointer;
-                    animate: 0.2s;
                     box-shadow: 0px 0px 0px #002200;
                     background: #CFCFCF;
                     border-radius: 0px;
@@ -170,7 +186,6 @@
                     width: 100%;
                     height: 5px;
                     cursor: pointer;
-                    animate: 0.2s;
                     background: transparent;
                     border-color: transparent;
                     color: transparent;
@@ -210,7 +225,9 @@
                 }
 
                 input[type=number] {
-                    -moz-appearance: textfield;
+                    -webkit-appearance: textfield;
+                       -moz-appearance: textfield;
+                            appearance: textfield;
                 }
 
                 input::-webkit-outer-spin-button,
@@ -220,33 +237,42 @@
                 }
 
                 div {
-                    width: 70%;
+                    display: -webkit-box;
+                    display: -ms-flexbox;
+                    display: flex;
+                    -ms-flex-pack: distribute;
+                        justify-content: space-around;
+                        flex-wrap: wrap;
+                        -ms-flex-wrap: wrap;
+                    min-width: 58px;    
                     border: 1px solid rgb(224, 222, 222);
                     border-radius: 5px;
-                    padding: 10px;
+                    padding: 5px;
                     cursor: default;
-
+                    font-size: 12px;
                 }
 
                 input[type=number] {
-                    width: inherit;
+                    width: 50%;
                     border: none;
                     outline: none;
-                    margin-left: 5px;
+                    font-size: 12px;
+                }
+                .bttnClearAll{
+
+                    background-color: #ff6163;
+                    color: white;
+                    padding: 10px;
+                    border-radius: 5px;
+                    margin: 10px 0;
                 }
             }
-
-        //     .size{
-
-        //         &__position{
-        //             display: grid;
-        //         }
-        //     }
-        // }
-
+  
     }
 
-
+hr{
+    margin: 10px 0 10px 0;
+}
     &__filteredProducts {
         display: grid;
         grid-template-columns: repeat(auto-fit, 200px);
@@ -260,5 +286,75 @@
 }
 
 .input{
+    display: grid;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
 
-}
+        span{
+            font-size: 15px;
+            &::first-letter{
+                text-transform: uppercase;
+            }
+        }
+
+
+        &__label{
+            display: block;
+            position: relative;
+            padding-left: 25px;
+            cursor: pointer;
+            font-size: 15px;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            font-weight: 100;
+
+        }
+        &__checkbox{
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+            height: 0;
+            width: 0;
+    
+        }
+        .checkmark{
+            position: absolute;
+            top: 3px;
+            left: 0;
+            height: 15px;
+            width: 15px;
+            background-color: #eee;
+            border-radius: 4px;
+        }
+        &__label:hover input ~ .checkmark {
+            background-color: rgb(227, 225, 225);
+          }   
+          &__label input:checked ~ .checkmark {
+            background-color: #ff6163;
+          }
+          .checkmark:after {
+            content: "";
+            position: absolute;
+            display: none;
+          }
+          &__label input:checked ~ .checkmark:after {
+            display: block;
+          }
+          &__label .checkmark:after {
+            left: 5px;
+            top: 3px;
+            width: 3px;
+            height: 5px;
+            border: solid white;
+            border-width: 0 2px 2px 0;
+            -webkit-transform: rotate(45deg);
+            -ms-transform: rotate(45deg);
+            transform: rotate(45deg);
+          }
+          
+    }

@@ -2,6 +2,7 @@ import { sizes } from '../../services/ClothesService';
 import { BadgeType, IClothesService } from '../../types/Types';
 import Breadcrumbs from '../../components/Breadcrumbs/Breadcrumbs';
 import MyButtons from '../../components/MyButtons/MyButtons';
+import { addDataBadge, incrementBadge } from '../../Slices/BadgeSlice';
 
 interface IProps {
     singleProduct: IClothesService,
@@ -53,11 +54,16 @@ const Component = ({ singleProduct }: IProps) => {
 
                     <div className='wrap__information__buy'>
                         {/* Buy and likes bttn */}
-                        <button
-                            className='wrap__information__buy-bttn'> BUY IT
-                        </button>
+                        <MyButtons
+                            type={BadgeType.cart}
+                            product={singleProduct}
+                            styles={{
+                                on: 'wrap__information__buy-bttn',
+                                off: 'wrap__information__buy-bttn'
+                            }}
+                            on="BUY IT"
+                        />
                         <div className='wrap__information__buy-favorites'>
-
                             {
                                 <MyButtons
                                     on='&#9825;'

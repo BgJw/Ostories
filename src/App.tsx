@@ -12,6 +12,7 @@ import HomePage from './pages/HomePage/HomePage';
 
 import './app.scss';
 import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
+import CartPage from './pages/CartPage/CartPage';
 
 function App() {
   const dispatch = useAppDispatch();
@@ -35,6 +36,7 @@ useEffect(()=> {
           <Route element={<FilterPage />} path={'/filter'} />
           <Route element={<ComparePage />} path={'/compare'} />
           <Route element={<FavoritesPage />} path={'/favorites'}/>
+          <Route element={<CartPage />} path={'/cart'}/>
           <Route element={<NotFoundPage />} path={'*'} />
         </Routes>
         

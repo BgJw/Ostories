@@ -9,7 +9,6 @@ export const sizes = ['S', 'M', 'L', 'XL', 'XXL'];
 
 const ClothesService = () => {
     
-
     const random = (min: number, max: number) =>  {
         return Math.floor(Math.random() * (max - min + 1) + min)};
 
