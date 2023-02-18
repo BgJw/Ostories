@@ -36,7 +36,7 @@ export interface IBadgeSlice {
     },
     cart: {
         amount: number,
-        data: IClothesService[]
+        data: ICarts[]
     },
     compare: {
         amount: number,
@@ -44,6 +44,9 @@ export interface IBadgeSlice {
     }
 }
 
+export interface ICarts extends IClothesService{
+    size?: string[]
+}
 
 // interface for Gallery Slice
 

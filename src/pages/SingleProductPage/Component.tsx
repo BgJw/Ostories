@@ -1,14 +1,17 @@
-import { sizes } from '../../services/ClothesService';
 import { BadgeType, IClothesService } from '../../types/Types';
 import Breadcrumbs from '../../components/Breadcrumbs/Breadcrumbs';
 import MyButtons from '../../components/MyButtons/MyButtons';
-import { addDataBadge, incrementBadge } from '../../Slices/BadgeSlice';
+import Sizes from '../../components/Sizes/Sizes';
+import { useState } from 'react';
+import { useAppSelector } from '../../Hooks/useDispatch_Selector';
 
 interface IProps {
     singleProduct: IClothesService,
 }
 
 const Component = ({ singleProduct }: IProps) => {
+    const [size, setSize] = useState<string[]>(['S']);
+    const {data} = useAppSelector( state => state.BadgeSlice.cart);
 
     return (
         <>
@@ -16,18 +19,18 @@ const Component = ({ singleProduct }: IProps) => {
             {/* start photo element */}
             <div className='wrap'>
                 <div className='wrap__photo'>
-                        {
-                            <MyButtons
-                                styles={{
-                                    on: 'wrap__photo-bttnOf bttn__link',
-                                    off: 'wrap__photo-bttnOn bttn__link'
-                                }}
-                                type={BadgeType.compare}
-                                product={singleProduct}
-                            />
-                        }
-                    <img className='wrap__photo-img' src={singleProduct.urls.regular} 
-                                                     alt={singleProduct.alt_description} />
+                    {
+                        <MyButtons
+                            styles={{
+                                on: 'wrap__photo-bttnOf bttn__link',
+                                off: 'wrap__photo-bttnOn bttn__link'
+                            }}
+                            type={BadgeType.compare}
+                            product={singleProduct}
+                        />
+                    }
+                    <img className='wrap__photo-img' src={singleProduct.urls.regular}
+                        alt={singleProduct.alt_description} />
                 </div>
                 {/* End photo element */}
 
@@ -38,30 +41,28 @@ const Component = ({ singleProduct }: IProps) => {
                         <span className='wrap__information__preview-price'>{singleProduct.price} $</span>
                     </div>
                     {/* Size */}
-                    Sizing
-                    <div className='wrap__information__sizes'>
-                        {
-                            sizes.map( (el, i) => (
-                                <button
-                                    key={el + i} 
-                                    className={`wrap__information__sizes-bttn ${singleProduct.sizes?.includes(el) && ' isSize'}`}>
-                                        {el}
-                                </button>
+                    <span className='size'>
+                        Sizing
+                    </span> 
+                     {
+                        data.find( el => el.id === singleProduct.id) ?
+                        ''
+                        :
+                        <Sizes setSize={setSize} size={size} />
+                    }
 
-                            ))
-                        }
-                    </div>
-
-                    <div className='wrap__information__buy'>
                         {/* Buy and likes bttn */}
+                    <div className='wrap__information__buy'>
                         <MyButtons
-                            type={BadgeType.cart}
-                            product={singleProduct}
+                            on="BUY IT"
+                            off='REMOVE IT'
                             styles={{
                                 on: 'wrap__information__buy-bttn',
                                 off: 'wrap__information__buy-bttn'
                             }}
-                            on="BUY IT"
+                            type={BadgeType.cart}
+                            product={singleProduct}
+                            sizeForCart={size}
                         />
                         <div className='wrap__information__buy-favorites'>
                             {

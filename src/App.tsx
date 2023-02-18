@@ -10,9 +10,12 @@ import FavoritesPage from './pages/FavoritesPage/FavoritesPage';
 import FilterPage from './pages/FilterPage/FilterPage';
 import HomePage from './pages/HomePage/HomePage';
 
-import './app.scss';
 import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
 import CartPage from './pages/CartPage/CartPage';
+import { isCheckLocalStorage } from './Slices/BadgeSlice';
+
+
+import './app.scss';
 
 function App() {
   const dispatch = useAppDispatch();
@@ -21,7 +24,7 @@ function App() {
 useEffect(()=> {
   dispatch(fetchClothesForMan());
   dispatch(fetchClothesForWoman());
-
+  dispatch(isCheckLocalStorage());
 }, []);
 
   return (

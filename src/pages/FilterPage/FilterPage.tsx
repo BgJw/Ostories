@@ -120,7 +120,9 @@ const FilterPage = () => {
             </div>
                 <div className={`filter__options ${isOpenFilter ? 'active' : ''}`}>
                     <div className='price'>
-                        Price
+                        <span>
+                            Price:
+                        </span> 
                         <input
                             type="range"
                             min={35}
